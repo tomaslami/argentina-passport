@@ -24,6 +24,18 @@
   --text-eyebrow: 0.75rem;
   --text-eyebrow--line-height: 1.4;
 
+  /* Figma-derived sizes (Home page) */
+  --text-service-number: 8rem;      /* 128px — números grandes de cards de servicio */
+  --text-service-number--line-height: 1;
+  --text-card-title: 4rem;          /* 64px — títulos de cards de servicio */
+  --text-card-title--line-height: 1.1;
+  --text-stat: 3rem;                /* 48px — valores del StatsBar */
+  --text-stat--line-height: 1;
+  --text-step: 2.25rem;             /* 36px — números y títulos How it works */
+  --text-step--line-height: 1.2;
+  --text-step-body: 1.5rem;         /* 24px — cuerpo de pasos How it works */
+  --text-step-body--line-height: 1.6;
+
   /* Color tokens */
   --color-navy-900: #1a3557;
   --color-navy-800: #21405f;

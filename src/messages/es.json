@@ -78,7 +78,7 @@
       "body": "Argentina Passport es una firma privada especializada en ciudadanía por inversión. Gestionamos cada paso legal, financiero y logístico, para que la única decisión sea dónde invertir."
     },
     "services": {
-      "eyebrow": "/Qué hacemos",
+      "eyebrow": "Qué hacemos",
       "title": "Tres servicios. Un resultado.",
       "exploreCta": "EXPLORAR NUESTROS SERVICIOS",
       "imageFallback": "Imagen próximamente",
@@ -108,7 +108,7 @@
       }
     },
     "process": {
-      "eyebrow": "/Cómo funciona",
+      "eyebrow": "Cómo funciona",
       "title": "De la primera consulta al pasaporte argentino.",
       "step1": {
         "title": "Consulta privada",
@@ -130,17 +130,78 @@
     }
   },
   "about": {
-    "placeholder": {
-      "title": "Página de firma en preparación.",
-      "body": "El contenido de la spec 02 se integrará sobre esta base.",
-      "cta": "Volver al inicio"
+    "hero": {
+      "watermark": "ABOUT",
+      "eyebrow": "Quiénes somos",
+      "title": "Décadas de experiencia. Un objetivo claro.",
+      "subtitle": "Un equipo legal, financiero y de conserjería dedicado exclusivamente a la ciudadanía por inversión."
+    },
+    "statement": {
+      "eyebrow": "Sobre nosotros",
+      "line1": "Nos encargamos de cada paso.",
+      "line2": "Usted elige dónde invertir.",
+      "location": "BUENOS AIRES, ARGENTINA"
+    },
+    "pillars": {
+      "body": "Argentina Passport es una firma boutique especializada en la obtención acelerada de la ciudadanía argentina para inversores calificados. Gestionamos cada detalle legal, financiero y logístico con precisión y discreción absoluta.",
+      "quote": "«Nuestros clientes no buscan un servicio. Buscan certeza.»",
+      "pillar1": {
+        "title": "CELERIDAD",
+        "description": "La vía legal más rápida hacia la ciudadanía argentina."
+      },
+      "pillar2": {
+        "title": "EXCELENCIA LEGAL",
+        "description": "Décadas de experiencia en derecho migratorio argentino."
+      },
+      "pillar3": {
+        "title": "EXPERTISE FINANCIERO",
+        "description": "Brokers especializados en real estate, energía y negocios."
+      },
+      "pillar4": {
+        "title": "SERVICIO ELITE",
+        "description": "Atención premium desde la primera consulta hasta la entrega del pasaporte."
+      }
     }
   },
   "services": {
-    "placeholder": {
-      "title": "Servicios disponibles pronto.",
-      "body": "La spec 03 definirá las capas finales.",
-      "cta": "Contáctenos"
+    "hero": {
+      "watermark": "SERVICES",
+      "eyebrow": "Qué hacemos",
+      "title": "Tres servicios. Un resultado.",
+      "subtitle": "Gestión legal, asesoría de inversión y concierge de élite — integrados en un proceso único y sin fricciones."
+    },
+    "legal": {
+      "title": "Gestión Legal y Administrativa",
+      "body": "Representación legal integral durante todo el proceso de ciudadanía. Nuestro equipo de especialistas en derecho migratorio gestiona cada presentación, trámite y requisito procedimental ante las autoridades argentinas. Desde la apostilla de documentos hasta el retiro del pasaporte, administramos el cronograma legal completo con actualizaciones en tiempo real en cada hito.",
+      "listTitle": "Incluye",
+      "item1": "Evaluación inicial de elegibilidad y consulta legal",
+      "item2": "Preparación completa de documentos y servicios de apostilla",
+      "item3": "Representación ante el gobierno y presentación de expedientes",
+      "item4": "Presentación y seguimiento de la solicitud de ciudadanía",
+      "item5": "Preparación para la entrevista y acompañamiento",
+      "item6": "Coordinación del retiro y entrega del pasaporte"
+    },
+    "investment": {
+      "title": "Asesoría de Inversión",
+      "body": "Estructuración estratégica de inversiones en los sectores inmobiliario, energético y empresarial. Su capital trabajando desde el primer día con total transparencia y cumplimiento normativo. Lo conectamos con oportunidades verificadas alineadas con los requisitos de ciudadanía y sus objetivos financieros.",
+      "listTitle": "Opciones de Inversión",
+      "item1": "Desarrollo de portafolio inmobiliario",
+      "item2": "Inversiones en sectores agrícola y energético",
+      "item3": "Establecimiento y expansión de empresas",
+      "item4": "Asignaciones en bonos gubernamentales",
+      "item5": "Diversificación estratégica de activos",
+      "item6": "Planificación de estrategia de salida y repatriación"
+    },
+    "vip": {
+      "title": "Concierge VIP",
+      "body": "Soporte white-glove para cada aspecto de su experiencia argentina. Desde el alojamiento y el transporte hasta la programación cultural y la logística personal, cada detalle se gestiona con discreción y precisión. Usted se concentra en su decisión. Nosotros nos encargamos del resto.",
+      "listTitle": "Servicios incluidos",
+      "item1": "Gestión de alojamiento premium",
+      "item2": "Transporte privado y coordinación de seguridad",
+      "item3": "Programación cultural y experiencias locales",
+      "item4": "Servicios de traducción e interpretación",
+      "item5": "Presentación de instalaciones médicas y educativas",
+      "item6": "Asistencia continua durante la residencia"
     }
   },
   "process": {

@@ -79,7 +79,7 @@ function AnimatedCounter({ template, target }: CounterProps) {
   }, [isInView, prefix, suffix, target]);
 
   return (
-    <span ref={spanRef} className="text-h2 font-light text-gold-500">
+    <span ref={spanRef} className="text-stat font-medium text-gold-500">
       {display}
     </span>
   );
@@ -107,7 +107,7 @@ export function StatsBar({ className }: StatsBarProps) {
                     target={Number(t(stat.countKey))}
                   />
                 ) : (
-                  <span className="text-h3 font-light text-gold-500">{valueTemplate}</span>
+                  <span className="text-stat font-medium text-gold-500">{valueTemplate}</span>
                 )}
                 <span className="text-small uppercase tracking-[0.2em] text-cream-50/80">
                   {label}

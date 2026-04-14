@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse";
 type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -12,6 +12,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary:
     "border border-cream-50/30 text-cream-50 hover:bg-cream-50/10 transition-colors duration-200",
   ghost: "text-gold-500 hover:text-gold-400 transition-colors duration-200",
+  inverse:
+    "bg-navy-900 text-cream-50 hover:bg-navy-800 transition-colors duration-200",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

@@ -1,16 +1,13 @@
-﻿import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
-type NotFoundProps = {
-  params: { locale: string };
-};
-
-export default async function LocaleNotFound({ params }: NotFoundProps) {
-  const { locale } = params;
-  setRequestLocale(locale);
+// not-found.tsx does not receive route params in Next.js 16.
+// Use getLocale() from next-intl to read the active locale.
+export default async function LocaleNotFound() {
+  const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "notFound" });
 
   return (

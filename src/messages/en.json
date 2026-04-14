@@ -78,7 +78,7 @@
       "body": "Argentina Passport is a private firm specializing in citizenship by investment. We manage every legal, financial and logistical step—so the only decision you make is where to invest."
     },
     "services": {
-      "eyebrow": "/What we do",
+      "eyebrow": "What we do",
       "title": "Three services. One outcome.",
       "exploreCta": "EXPLORE OUR SERVICES",
       "imageFallback": "Image coming soon",
@@ -108,7 +108,7 @@
       }
     },
     "process": {
-      "eyebrow": "/How it works",
+      "eyebrow": "How it works",
       "title": "From first consultation to Argentine passport.",
       "step1": {
         "title": "Private Consultation",
@@ -130,17 +130,78 @@
     }
   },
   "about": {
-    "placeholder": {
-      "title": "About page in preparation.",
-      "body": "Content from spec 02 will be integrated on top of this foundation.",
-      "cta": "Return home"
+    "hero": {
+      "watermark": "ABOUT",
+      "eyebrow": "Who we are",
+      "title": "Decades of experience. One clear objective.",
+      "subtitle": "A legal, financial and concierge team built exclusively for citizenship by investment."
+    },
+    "statement": {
+      "eyebrow": "About us",
+      "line1": "We handle every step.",
+      "line2": "You choose where to invest.",
+      "location": "BUENOS AIRES, ARGENTINA"
+    },
+    "pillars": {
+      "body": "Argentina Passport is a boutique firm specializing in fast-track Argentine citizenship for qualified investors. We handle every legal, financial, and logistical detail with precision and complete discretion.",
+      "quote": "\"Our clients don't seek a service. They seek certainty.\"",
+      "pillar1": {
+        "title": "CELERITY",
+        "description": "The fastest legal path to Argentine citizenship."
+      },
+      "pillar2": {
+        "title": "LEGAL EXCELLENCE",
+        "description": "Decades of experience in Argentine immigration law."
+      },
+      "pillar3": {
+        "title": "INVESTMENT EXPERTISE",
+        "description": "Brokers specialized in real estate, energy and business."
+      },
+      "pillar4": {
+        "title": "ELITE SERVICE",
+        "description": "White-glove attention from first consultation to passport delivery."
+      }
     }
   },
   "services": {
-    "placeholder": {
-      "title": "Services page coming soon.",
-      "body": "Spec 03 will define the final service tiers and deliverables.",
-      "cta": "Contact us"
+    "hero": {
+      "watermark": "SERVICES",
+      "eyebrow": "What we do",
+      "title": "Three services. One outcome.",
+      "subtitle": "Legal management, investment advisory and elite concierge — handled as a single, seamless process."
+    },
+    "legal": {
+      "title": "Legal & Administrative",
+      "body": "Complete legal representation throughout the citizenship process. Our team of immigration law specialists handles every filing, liaison, and procedural requirement with Argentine authorities. From document apostille to final passport collection, we manage the entire legal timeline with real-time updates at every milestone.",
+      "listTitle": "Inclusions",
+      "item1": "Initial eligibility assessment and legal consultation",
+      "item2": "Complete document preparation and apostille services",
+      "item3": "Government liaison and filing representation",
+      "item4": "Citizenship application submission and tracking",
+      "item5": "Interview preparation and accompaniment",
+      "item6": "Passport collection and delivery coordination"
+    },
+    "investment": {
+      "title": "Investment Advisory",
+      "body": "Strategic investment structuring across real estate, energy, and business sectors. Your capital working from day one with full transparency and regulatory compliance. We connect you with verified opportunities aligned with citizenship requirements and your financial objectives.",
+      "listTitle": "Investment Options",
+      "item1": "Real estate portfolio development",
+      "item2": "Agricultural and energy sector investments",
+      "item3": "Business establishment and expansion",
+      "item4": "Government bond allocations",
+      "item5": "Strategic asset diversification",
+      "item6": "Exit strategy planning and repatriation"
+    },
+    "vip": {
+      "title": "VIP Concierge",
+      "body": "White-glove support for every aspect of your Argentine experience. From accommodation and transport to cultural programming and personal logistics, every detail is managed with discretion and precision. You focus on your decision. We handle everything else.",
+      "listTitle": "Services Provided",
+      "item1": "Premium accommodation arrangements",
+      "item2": "Private transport and security coordination",
+      "item3": "Cultural programming and local experiences",
+      "item4": "Translation and interpretation services",
+      "item5": "Medical and educational facility introductions",
+      "item6": "Ongoing support throughout residence"
     }
   },
   "process": {

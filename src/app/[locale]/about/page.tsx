@@ -1,20 +1,32 @@
-﻿import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
-import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
+import { AboutHero } from "@/components/sections/about/Hero";
+import { AboutStatement } from "@/components/sections/about/Statement";
+import { AboutPillars } from "@/components/sections/about/Pillars";
+import { StatsBar } from "@/components/sections/StatsBar";
+import { CTABanner } from "@/components/sections/CTABanner";
 
-type PageProps = {
+type AboutPageProps = {
   params: { locale: string };
 };
 
-export default function AboutPage({ params }: PageProps) {
-  setRequestLocale(params.locale);
+export default function AboutPage({ params }: AboutPageProps) {
+  const { locale } = params;
+  setRequestLocale(locale);
 
   return (
-    <PagePlaceholder
-      titleKey="about.placeholder.title"
-      bodyKey="about.placeholder.body"
-      ctaKey="about.placeholder.cta"
-      ctaHref="/"
-    />
+    <>
+      <AboutHero />
+      <AboutStatement />
+      <AboutPillars />
+      <StatsBar />
+      <CTABanner
+        eyebrowKey="ctaBanner.beginProcess.eyebrow"
+        titleKey="ctaBanner.beginProcess.title"
+        highlightKey="ctaBanner.beginProcess.highlight"
+        subtitleKey="ctaBanner.beginProcess.subtitle"
+        ctaKey="ctaBanner.beginProcess.cta"
+      />
+    </>
   );
 }
