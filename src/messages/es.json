@@ -1,0 +1,179 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Firma",
+    "services": "Servicios",
+    "process": "Proceso",
+    "investments": "Inversiones",
+    "vips": "VIPs",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "tagline": "Ciudadanía por inversión con precisión argentina.",
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "languages": "Idiomas",
+    "cta": "SOLICITAR UNA CONSULTA",
+    "email": "info@argentinapassport.com",
+    "copyright": "© 2026 Argentina Passport. Todos los derechos reservados.",
+    "privacyPolicy": "Política de privacidad",
+    "terms": "Términos",
+    "cookies": "Cookies",
+    "designedBy": "Diseñado por Synera"
+  },
+  "stats": {
+    "languagesValue": "EN RU AR ES",
+    "languagesLabel": "Idiomas nativos del equipo",
+    "stabilityValue": "ESTABLE",
+    "stabilityLabel": "Entorno geopolítico",
+    "investmentValue": "500K+",
+    "investmentCount": "500",
+    "investmentLabel": "Inversión mínima en USD",
+    "visaFreeValue": "171",
+    "visaFreeCount": "171",
+    "visaFreeLabel": "Países sin visa"
+  },
+  "ctaBanner": {
+    "beginProcess": {
+      "eyebrow": "INICIE EL PROCESO",
+      "title": "Listo para asegurar su",
+      "highlight": "segunda nacionalidad?",
+      "subtitle": "Consultas confidenciales en inglés, ruso y árabe.",
+      "cta": "ENVIAR SOLICITUD"
+    },
+    "experienceArgentina": {
+      "eyebrow": "VIVA ARGENTINA",
+      "title": "Comience su",
+      "highlight": "trayectoria argentina.",
+      "cta": "ENVIAR SOLICITUD"
+    },
+    "startInvesting": {
+      "eyebrow": "COMIENCE A INVERTIR",
+      "title": "Listo para explorar",
+      "highlight": "oportunidades de inversión?",
+      "cta": "ENVIAR SOLICITUD"
+    },
+    "getStarted": {
+      "eyebrow": "COMIENCE",
+      "title": "Listo para iniciar su",
+      "highlight": "proceso de ciudadanía?",
+      "cta": "ENVIAR SOLICITUD"
+    },
+    "scheduleConsultation": {
+      "eyebrow": "INICIE SU PROCESO",
+      "title": "Agende su",
+      "highlight": "consulta confidencial.",
+      "cta": "ENVIAR SOLICITUD"
+    }
+  },
+  "home": {
+    "hero": {
+      "titleLine1": "Tu pasaporte hacia",
+      "titleLine2": "cada destino.",
+      "subtitle": "Nos ocupamos del proceso legal, estructuramos tu inversión y gestionamos tu estadía en Argentina. Una firma. Un resultado. Tu pasaporte argentino.",
+      "cta": "SOLICITAR UNA CONSULTA PRIVADA"
+    },
+    "intro": {
+      "title": "Para quienes eligen dónde pertenecer.",
+      "body": "Argentina Passport es una firma privada especializada en ciudadanía por inversión. Gestionamos cada paso legal, financiero y logístico, para que la única decisión sea dónde invertir."
+    },
+    "services": {
+      "eyebrow": "/Qué hacemos",
+      "title": "Tres servicios. Un resultado.",
+      "exploreCta": "EXPLORAR NUESTROS SERVICIOS",
+      "imageFallback": "Imagen próximamente",
+      "card1": {
+        "title": "Gestión legal y administrativa",
+        "body": "Brindamos representación legal integral durante todo el proceso de ciudadanía argentina. Nuestros abogados matriculados gestionan la comunicación con el Ministerio de Economía, preparan y presentan cada documento y acompañan el expediente hasta la resolución final. No somos un derivador: el equipo jurídico trabaja exclusivamente en ciudadanía y tiene acceso directo a las áreas gubernamentales relevantes. Nunca tratás con autoridades — nosotros manejamos cada paso. Desde la traducción inicial de documentos hasta la entrega del pasaporte, todo se ejecuta con total discreción y supervisión profesional.",
+        "bullet1": "Representación ante el Ministerio de Economía",
+        "bullet2": "Preparación y presentación documental",
+        "bullet3": "Seguimiento administrativo integral",
+        "bullet4": "Resolución legal y entrega"
+      },
+      "card2": {
+        "title": "Asesoría de inversión",
+        "body": "La ciudadanía argentina por inversión exige un compromiso mínimo de USD 500.000. Estructuramos tu capital en tres canales preaprobados: real estate, infraestructura de energía renovable o participación directa en empresas. Nuestro equipo diseña un portafolio personalizado alineado con tu perfil de riesgo y el cronograma de ciudadanía. Todas las inversiones cumplen la normativa del Ministerio de Economía y se organizan para obtener reconocimiento inmediato por parte de las autoridades. Los canales de transferencia se habilitan antes de presentar el expediente. Trabajamos con instituciones registradas para garantizar transparencia y cumplimiento regulatorio en cada etapa.",
+        "bullet1": "Paquetes de inversión inmobiliaria",
+        "bullet2": "Infraestructura de energía renovable",
+        "bullet3": "Participación directa en empresas",
+        "bullet4": "Configuración inmediata de transferencias"
+      },
+      "card3": {
+        "title": "Concierge VIP y experiencias",
+        "body": "El proceso de ciudadanía requiere presencia física en Argentina. Nos aseguramos de que tu estadía sea productiva, cómoda y memorable. Desde la llegada hasta el regreso, nuestro concierge gestiona cada detalle logístico. Transporte privado, alojamiento curado y programación cultural personalizada están incluidos. Ya sea que te quedes dos semanas o dos meses, diseñamos la experiencia según tu agenda e intereses. No es turismo: es soporte white-glove para clientes que valoran la discreción, la precisión y las soluciones inmediatas.",
+        "bullet1": "Transporte privado y choferes",
+        "bullet2": "Alojamiento curado",
+        "bullet3": "Programación cultural y accesos",
+        "bullet4": "Soporte logístico 24/7"
+      }
+    },
+    "process": {
+      "eyebrow": "/Cómo funciona",
+      "title": "De la primera consulta al pasaporte argentino.",
+      "step1": {
+        "title": "Consulta privada",
+        "body": "Evaluamos tu perfil, capacidad de inversión y objetivos. Recibís una hoja de ruta completa antes de asumir cualquier compromiso."
+      },
+      "step2": {
+        "title": "Estructura de inversión",
+        "body": "Nuestros brokers diseñan tu paquete de inversión personalizado. Los canales de transferencia se habilitan de inmediato."
+      },
+      "step3": {
+        "title": "Presentación legal",
+        "body": "El equipo jurídico presenta tu solicitud ante el Ministerio de Economía y gestiona cada instancia administrativa hasta la resolución."
+      },
+      "step4": {
+        "title": "Ciudadanía concedida",
+        "body": "Se emite tu pasaporte argentino. Uno de los documentos de viaje más poderosos del mundo, obtenido mediante un proceso totalmente legal y expedito."
+      },
+      "fullProcessCta": "VER EL PROCESO COMPLETO"
+    }
+  },
+  "about": {
+    "placeholder": {
+      "title": "Página de firma en preparación.",
+      "body": "El contenido de la spec 02 se integrará sobre esta base.",
+      "cta": "Volver al inicio"
+    }
+  },
+  "services": {
+    "placeholder": {
+      "title": "Servicios disponibles pronto.",
+      "body": "La spec 03 definirá las capas finales.",
+      "cta": "Contáctenos"
+    }
+  },
+  "process": {
+    "placeholder": {
+      "title": "Página de proceso en desarrollo.",
+      "body": "Los hitos definidos en la spec 04 se publicarán aquí.",
+      "cta": "Ver inversiones"
+    }
+  },
+  "investments": {
+    "placeholder": {
+      "title": "Rutas de inversión en revisión.",
+      "body": "La spec 05 documentará los programas de capital.",
+      "cta": "Explorar servicios VIP"
+    }
+  },
+  "vips": {
+    "placeholder": {
+      "title": "Experiencias VIP en preparación.",
+      "body": "La spec 06 detallará la propuesta a medida.",
+      "cta": "Solicitar consulta"
+    }
+  },
+  "contact": {
+    "placeholder": {
+      "title": "La sección de contacto llegará con la spec 07.",
+      "body": "La server action y Resend se conectarán aquí pronto.",
+      "cta": "Volver al inicio"
+    }
+  },
+  "notFound": {
+    "title": "Esta página no existe.",
+    "body": "Verificá la URL o regresá al inicio.",
+    "cta": "Ir al inicio"
+  }
+}

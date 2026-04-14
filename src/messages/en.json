@@ -1,0 +1,179 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "process": "Process",
+    "investments": "Investments",
+    "vips": "VIPs",
+    "contact": "Contact"
+  },
+  "footer": {
+    "tagline": "Fast citizenship by investment with Argentine precision.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "languages": "Languages",
+    "cta": "REQUEST A CONSULTATION",
+    "email": "info@argentinapassport.com",
+    "copyright": "© 2026 Argentina Passport. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "designedBy": "Designed by Synera"
+  },
+  "stats": {
+    "languagesValue": "EN RU AR ES",
+    "languagesLabel": "Languages spoken natively",
+    "stabilityValue": "STABLE",
+    "stabilityLabel": "Geopolitical environment",
+    "investmentValue": "500K+",
+    "investmentCount": "500",
+    "investmentLabel": "Minimum USD investment",
+    "visaFreeValue": "171",
+    "visaFreeCount": "171",
+    "visaFreeLabel": "Visa-free countries"
+  },
+  "ctaBanner": {
+    "beginProcess": {
+      "eyebrow": "BEGIN THE PROCESS",
+      "title": "Ready to secure your",
+      "highlight": "second nationality?",
+      "subtitle": "Confidential consultations available in English, Russian and Arabic.",
+      "cta": "SUBMIT REQUEST"
+    },
+    "experienceArgentina": {
+      "eyebrow": "EXPERIENCE ARGENTINA",
+      "title": "Begin your",
+      "highlight": "Argentine journey.",
+      "cta": "SUBMIT REQUEST"
+    },
+    "startInvesting": {
+      "eyebrow": "START INVESTING",
+      "title": "Ready to explore",
+      "highlight": "investment opportunities?",
+      "cta": "SUBMIT REQUEST"
+    },
+    "getStarted": {
+      "eyebrow": "GET STARTED",
+      "title": "Ready to begin your",
+      "highlight": "citizenship journey?",
+      "cta": "SUBMIT REQUEST"
+    },
+    "scheduleConsultation": {
+      "eyebrow": "BEGIN YOUR PROCESS",
+      "title": "Schedule your",
+      "highlight": "confidential consultation.",
+      "cta": "SUBMIT REQUEST"
+    }
+  },
+  "home": {
+    "hero": {
+      "titleLine1": "Your passport to",
+      "titleLine2": "everywhere.",
+      "subtitle": "We handle the legal process, structure your investment and manage your stay in Argentina. One firm. One outcome. Your Argentine passport.",
+      "cta": "REQUEST A PRIVATE CONSULTATION"
+    },
+    "intro": {
+      "title": "For those who choose where they belong.",
+      "body": "Argentina Passport is a private firm specializing in citizenship by investment. We manage every legal, financial and logistical step—so the only decision you make is where to invest."
+    },
+    "services": {
+      "eyebrow": "/What we do",
+      "title": "Three services. One outcome.",
+      "exploreCta": "EXPLORE OUR SERVICES",
+      "imageFallback": "Image coming soon",
+      "card1": {
+        "title": "Legal & Administrative Management",
+        "body": "We provide full legal representation throughout the Argentine citizenship process. Our licensed attorneys manage all communication with the Ministry of Economy, prepare and file every required document, and follow your case through to final resolution. This is not a referral service. Our legal team works exclusively on citizenship cases and has direct access to the relevant government departments. You never interact with authorities directly—we handle every step. From initial document translation to final passport issuance, the process is managed with complete discretion and professional oversight.",
+        "bullet1": "Ministry of Economy representation",
+        "bullet2": "Document preparation & filing",
+        "bullet3": "Full administrative follow-up",
+        "bullet4": "Legal resolution & delivery"
+      },
+      "card2": {
+        "title": "Investment Advisory",
+        "body": "Argentine citizenship by investment requires a minimum capital commitment of USD $500,000. We structure your investment across three pre-approved channels: real estate, renewable energy infrastructure, or direct business equity. Our advisory team designs a personalized portfolio aligned with your risk profile and citizenship timeline. All investments comply with Ministry of Economy regulations and are structured to ensure immediate recognition by Argentine authorities. Capital transfer channels are established before filing. We work with registered financial institutions to ensure full transparency and regulatory compliance at every step.",
+        "bullet1": "Real estate investment packages",
+        "bullet2": "Renewable energy infrastructure",
+        "bullet3": "Direct business equity placement",
+        "bullet4": "Immediate capital transfer setup"
+      },
+      "card3": {
+        "title": "VIP Concierge & Experiences",
+        "body": "Citizenship processing requires physical presence in Argentina. We ensure your time here is productive, comfortable and memorable. From arrival to departure, our concierge team manages every logistical detail. Private transport, curated accommodation, and personalized cultural programming are included. Whether you're staying for two weeks or two months, we design your experience to match your schedule and interests. This is not tourism. It's white-glove support designed for clients who value discretion, precision and immediate solutions.",
+        "bullet1": "Private transport & drivers",
+        "bullet2": "Curated accommodation",
+        "bullet3": "Cultural programming & access",
+        "bullet4": "24/7 logistical support"
+      }
+    },
+    "process": {
+      "eyebrow": "/How it works",
+      "title": "From first consultation to Argentine passport.",
+      "step1": {
+        "title": "Private Consultation",
+        "body": "We assess your profile, investment capacity and objectives. You receive a complete roadmap before any commitment is made."
+      },
+      "step2": {
+        "title": "Investment Structure",
+        "body": "Our brokers design your personalized investment package. Capital transfer channels are established immediately."
+      },
+      "step3": {
+        "title": "Legal Filing",
+        "body": "Our legal team files your citizenship application before the Ministry of Economy and manages every administrative step through to resolution."
+      },
+      "step4": {
+        "title": "Citizenship Granted",
+        "body": "Your Argentine passport is issued. One of the world's most powerful travel documents, secured through a fully legal and expedited process."
+      },
+      "fullProcessCta": "SEE THE FULL PROCESS"
+    }
+  },
+  "about": {
+    "placeholder": {
+      "title": "About page in preparation.",
+      "body": "Content from spec 02 will be integrated on top of this foundation.",
+      "cta": "Return home"
+    }
+  },
+  "services": {
+    "placeholder": {
+      "title": "Services page coming soon.",
+      "body": "Spec 03 will define the final service tiers and deliverables.",
+      "cta": "Contact us"
+    }
+  },
+  "process": {
+    "placeholder": {
+      "title": "Process page pending.",
+      "body": "Detailed timelines from spec 04 will be published here.",
+      "cta": "View investments"
+    }
+  },
+  "investments": {
+    "placeholder": {
+      "title": "Investment pathways forthcoming.",
+      "body": "Spec 05 will document the capital programs and sections.",
+      "cta": "Explore VIP services"
+    }
+  },
+  "vips": {
+    "placeholder": {
+      "title": "VIP experiences under review.",
+      "body": "Spec 06 will define the bespoke program.",
+      "cta": "Request consultation"
+    }
+  },
+  "contact": {
+    "placeholder": {
+      "title": "Contact interface ships with spec 07.",
+      "body": "Server action, validation and Resend messaging will connect here soon.",
+      "cta": "Back to home"
+    }
+  },
+  "notFound": {
+    "title": "This page does not exist.",
+    "body": "Verify the URL or return to the homepage.",
+    "cta": "Go home"
+  }
+}
