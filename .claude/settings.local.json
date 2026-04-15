@@ -3,7 +3,32 @@
     "allow": [
       "Bash(pnpm typecheck:*)",
       "Bash(pnpm build:*)",
-      "mcp__Figma__get_screenshot"
+      "mcp__Figma__get_screenshot",
+      "Skill(figma-implement)",
+      "Bash(ls i18n/)",
+      "Bash(ls src/app/)",
+      "Bash(ls components/)",
+      "mcp__claude_ai_Figma__get_design_context",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('src/messages/es.json'\\)\\); print\\(json.dumps\\(d.get\\('process', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('src/messages/ru.json'\\)\\); print\\(json.dumps\\(d.get\\('process', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('src/messages/ar.json'\\)\\); print\\(json.dumps\\(d.get\\('process', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); ['es','ru','ar'].forEach\\(l => { const d=JSON.parse\\(fs.readFileSync\\('src/messages/'+l+'.json'\\)\\); console.log\\('---'+l+'---'\\); console.log\\(JSON.stringify\\(d.process||{}, null, 2\\)\\); }\\)\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\tomas\\\\OneDrive\\\\Documentos\\\\synera\\\\argentina-passport\\\\public\\\\images\\\\process\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\tomas\\\\OneDrive\\\\Documentos\\\\synera\\\\argentina-passport\\\\src\\\\components\\\\sections\\\\process\")",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/e0d0db46-3acb-433b-b9e9-7b8a3fbb5e0d\" -o \"public/images/process/consultation.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/24c0ec2b-927e-4d8b-a90d-ab9e79555a83\" -o \"public/images/process/investment.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/f7d0c2ff-e97e-4622-9c49-af5f2cbebb49\" -o \"public/images/process/legal-filing.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/9265df8d-0cb4-4e25-aabe-349f7739c674\" -o \"public/images/process/passport.jpg\" --silent --show-error)",
+      "Bash(curl -s http://localhost:3000/en/process)",
+      "Bash(curl -s http://localhost:3000/ar/process)",
+      "Bash(node -e ' *)",
+      "Bash(curl -s http://localhost:3000/es/process)",
+      "Bash(curl -s http://localhost:3000/ru/process)",
+      "Bash(node -e \"const fs=require\\('fs'\\); ['es','ru','ar'].forEach\\(l => { const d=JSON.parse\\(fs.readFileSync\\('src/messages/'+l+'.json'\\)\\); console.log\\('---'+l+'---'\\); console.log\\(JSON.stringify\\(d.investments||'MISSING', null, 2\\)\\); }\\)\")",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/2360267b-60d9-45e6-8dc3-9bdee0ec7144\" -o \"public/images/vips/wine.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/68c9c9fa-34f9-44f0-8f82-1cf6b46ce4e6\" -o \"public/images/vips/polo.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/e176eb85-5ac0-4378-826b-a2579b567ab9\" -o \"public/images/vips/culture.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/54111914-6337-4021-aced-39b07f91767b\" -o \"public/images/vips/patagonia.jpg\" --silent --show-error)"
     ]
   }
 }

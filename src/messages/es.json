@@ -205,24 +205,131 @@
     }
   },
   "process": {
-    "placeholder": {
-      "title": "Página de proceso en desarrollo.",
-      "body": "Los hitos definidos en la spec 04 se publicarán aquí.",
-      "cta": "Ver inversiones"
+    "header": {
+      "backgroundWord": "PROCESO",
+      "eyebrow": "Cómo funciona",
+      "titleLine1": "Desde la primera consulta",
+      "titleLine2": "hasta el pasaporte argentino.",
+      "subtitle": "Un proceso de cuatro pasos gestionado íntegramente por nuestro equipo, desde la tramitación legal hasta la estructura de inversión."
+    },
+    "step1": {
+      "stepLabel": "PASO UNO",
+      "title": "Consulta Privada",
+      "body1": "Evaluación confidencial de su elegibilidad, plazos y estructura de inversión. Revisamos sus objetivos, delineamos el proceso completo y respondemos cada pregunta con total transparencia. Sin compromisos. Discreción absoluta.",
+      "body2": "Esta conversación inicial establece los cimientos de todo lo que sigue: su calendario, su estrategia de inversión, sus expectativas."
+    },
+    "step2": {
+      "stepLabel": "PASO DOS",
+      "title": "Planificación de la Inversión",
+      "body1": "Cartera de inversión personalizada alineada con los requisitos de ciudadanía y sus objetivos financieros. Presentamos oportunidades verificadas en bienes raíces, energía y sectores empresariales, cada opción evaluada para su cumplimiento y potencial de retorno.",
+      "body2": "Su capital comienza a trabajar desde el primer día. Transparencia total. Control total. Despliegue estratégico diseñado tanto para la calificación ciudadana como para el valor a largo plazo."
+    },
+    "step3": {
+      "stepLabel": "PASO TRES",
+      "title": "Presentación Legal",
+      "body1": "Preparación completa de documentos y presentación ante las autoridades argentinas. Nuestro equipo legal gestiona cada trámite, apostilla, traducción y requisito procedimental. Usted recibe actualizaciones en tiempo real en cada hito.",
+      "body2": "Aquí es donde décadas de experiencia en derecho migratorio argentino se vuelven tangibles. Procesamiento acelerado. Enlace gubernamental. Preparación para entrevistas. Todo gestionado con precisión."
+    },
+    "step4": {
+      "stepLabel": "PASO CUATRO",
+      "title": "Ciudadanía Otorgada",
+      "body1": "Reciba su pasaporte argentino y la plena ciudadanía. Acceso a 171 países sin visa. Residencia permanente. El derecho a vivir, trabajar e invertir en toda Argentina y el Mercosur.",
+      "body2": "Nuestra relación no termina aquí. Soporte de concierge continuo, asesoría de inversiones y acceso de por vida a nuestro equipo para cualquier gestión argentina."
     }
   },
   "investments": {
-    "placeholder": {
-      "title": "Rutas de inversión en revisión.",
-      "body": "La spec 05 documentará los programas de capital.",
-      "cta": "Explorar servicios VIP"
+    "header": {
+      "backgroundWord": "CAPITAL",
+      "eyebrow": "A dónde va su capital",
+      "titleLine1": "Su capital.",
+      "titleLine2": "Trabajando desde el primer día.",
+      "subtitle": "Paquetes de inversión personalizados en bienes raíces, energía y sectores empresariales."
+    },
+    "table": {
+      "title": "Asignación estratégica.",
+      "headerRange": "Rango",
+      "headerReturn": "Retorno",
+      "headerTimeline": "Plazo",
+      "realEstate": { "name": "Bienes Raíces", "range": "$500K–$2M", "return": "Alquiler + Valorización", "timeline": "2–5 años" },
+      "energy": { "name": "Energía", "range": "$750K–$3M", "return": "PPA a largo plazo", "timeline": "5–10 años" },
+      "business": { "name": "Empresas", "range": "$500K–$1.5M", "return": "Equity + Dividendos", "timeline": "3–7 años" },
+      "minimumLabel": "Requisito Mínimo",
+      "minimumValue": "USD 500,000",
+      "minimumCta": "INICIAR EL PROCESO",
+      "minimumDescription": "Inversión mínima requerida para el programa argentino de ciudadanía por inversión. Todas las inversiones están totalmente documentadas y verificadas en cuanto a cumplimiento normativo."
+    },
+    "support": {
+      "eyebrow": "Lo que ofrecemos",
+      "titleLine1": "Soporte",
+      "titleHighlight": "de inversión completo.",
+      "vetting": { "title": "Evaluación de oportunidades", "body": "Cada oportunidad de inversión se verifica para cumplimiento legal, viabilidad de mercado y alineación con los requisitos de ciudadanía." },
+      "structuring": { "title": "Estructuración de cartera", "body": "Asignación de inversión personalizada diseñada tanto para la calificación de ciudadanía como para los objetivos financieros a largo plazo." },
+      "compliance": { "title": "Cumplimiento regulatorio", "body": "Documentación completa y adhesión a las regulaciones de inversión argentinas. Cada transacción es completamente trazable y auditable." },
+      "exit": { "title": "Estrategia de salida", "body": "Vías de salida claras establecidas al inicio de la inversión. Opciones de repatriación de capital y liquidez integradas en cada cartera." }
     }
   },
   "vips": {
-    "placeholder": {
-      "title": "Experiencias VIP en preparación.",
-      "body": "La spec 06 detallará la propuesta a medida.",
-      "cta": "Solicitar consulta"
+    "header": {
+      "backgroundWord": "EXPERIENCE",
+      "eyebrow": "Mientras espera",
+      "titleLine1": "Argentina.",
+      "titleLine2": "Vivida de otra manera.",
+      "subtitle": "Alojamiento privado, viajes curados y concierge de élite durante toda su estadía."
+    },
+    "experiences": {
+      "eyebrow": "VIP & Experiencias",
+      "titleLine1": "Argentina.",
+      "titleLine2": "Vivida de otra manera.",
+      "wine": {
+        "title": "Vino & Gastronomía",
+        "body": "Tours privados a bodegas, degustaciones exclusivas y reservas en los restaurantes más distinguidos de Argentina."
+      },
+      "polo": {
+        "title": "Polo & Equitación",
+        "body": "Acceso a clubes de polo privados, cabalgatas en estancias y palcos VIP en partidos de campeonato."
+      },
+      "culture": {
+        "title": "Cultura & Arte",
+        "body": "Clases privadas de tango, acceso exclusivo al Teatro Colón y tours curados por galerías de arte contemporáneo."
+      },
+      "patagonia": {
+        "title": "Patagonia & Aventura",
+        "body": "Tours en helicóptero sobre glaciares, alojamiento en lodges privados y expediciones guiadas por la naturaleza argentina."
+      }
+    },
+    "concierge": {
+      "eyebrow": "Servicios de Concierge",
+      "titleLine1": "Cada detalle.",
+      "titleHighlight": "Gestionado.",
+      "accommodation": {
+        "title": "Alojamiento",
+        "body": "Hoteles premium, apartamentos con servicios y residencias privadas. Propiedades verificadas en Buenos Aires y más allá."
+      },
+      "transportation": {
+        "title": "Transporte",
+        "body": "Choferes privados, vehículos ejecutivos y traslados en helicóptero. Seguro, discreto, a demanda."
+      },
+      "culturalAccess": {
+        "title": "Acceso Cultural",
+        "body": "Acceso exclusivo a instituciones culturales argentinas, colecciones privadas e invitaciones a eventos VIP."
+      },
+      "personal": {
+        "title": "Servicios Personales",
+        "body": "Presentación médica, tours de instalaciones educativas, servicios de traducción y apoyo continuo."
+      },
+      "lifestyle": {
+        "title": "Gestión de Estilo de Vida",
+        "body": "Reservas en restaurantes, tratamientos de spa, instalaciones deportivas y asistencia de compras personal."
+      },
+      "family": {
+        "title": "Servicios Familiares",
+        "body": "Cuidado infantil, consultas educativas, actividades familiares y programación cultural adaptada a cada edad."
+      }
+    },
+    "quote": {
+      "text": "Cada detalle gestionado. Cada preferencia anticipada.",
+      "description": "Esto no es turismo. Es atención integral diseñada para clientes que valoran la discreción, la precisión y las soluciones inmediatas.",
+      "attribution": "Argentina Passport"
     }
   },
   "contact": {

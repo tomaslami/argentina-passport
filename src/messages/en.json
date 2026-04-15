@@ -205,24 +205,131 @@
     }
   },
   "process": {
-    "placeholder": {
-      "title": "Process page pending.",
-      "body": "Detailed timelines from spec 04 will be published here.",
-      "cta": "View investments"
+    "header": {
+      "backgroundWord": "PROCESS",
+      "eyebrow": "How it works",
+      "titleLine1": "From first consultation",
+      "titleLine2": "to Argentine passport.",
+      "subtitle": "A four-step process managed entirely by our team, from legal filing to investment structure."
+    },
+    "step1": {
+      "stepLabel": "STEP ONE",
+      "title": "Private Consultation",
+      "body1": "Confidential assessment of your eligibility, timeline, and investment structure. We review your objectives, outline the complete process, and answer every question with full transparency. No obligations. Complete discretion.",
+      "body2": "This initial conversation establishes the foundation for everything that follows — your timeline, your investment strategy, your expectations."
+    },
+    "step2": {
+      "stepLabel": "STEP TWO",
+      "title": "Investment Planning",
+      "body1": "Personalized investment portfolio aligned with citizenship requirements and your financial objectives. We present verified opportunities across real estate, energy, and business sectors — each option vetted for compliance and return potential.",
+      "body2": "Your capital begins working from day one. Full transparency. Full control. Strategic deployment designed for both citizenship qualification and long-term value."
+    },
+    "step3": {
+      "stepLabel": "STEP THREE",
+      "title": "Legal Filing",
+      "body1": "Complete document preparation and submission to Argentine authorities. Our legal team handles every filing, apostille, translation, and procedural requirement. You receive real-time updates at every milestone.",
+      "body2": "This is where decades of experience in Argentine immigration law becomes tangible. Fast-track processing. Government liaison. Interview preparation. Everything managed with precision."
+    },
+    "step4": {
+      "stepLabel": "STEP FOUR",
+      "title": "Citizenship Granted",
+      "body1": "Receive your Argentine passport and full citizenship rights. Access to 171 visa-free countries. Permanent residency. The right to live, work, and invest throughout Argentina and Mercosur.",
+      "body2": "Our relationship doesn't end here. Ongoing concierge support, investment advisory, and lifetime access to our team for any Argentine matters."
     }
   },
   "investments": {
-    "placeholder": {
-      "title": "Investment pathways forthcoming.",
-      "body": "Spec 05 will document the capital programs and sections.",
-      "cta": "Explore VIP services"
+    "header": {
+      "backgroundWord": "CAPITAL",
+      "eyebrow": "Where your capital goes",
+      "titleLine1": "Your capital.",
+      "titleLine2": "Working from day one.",
+      "subtitle": "Personalized investment packages across real estate, energy and business sectors."
+    },
+    "table": {
+      "title": "Strategic allocation.",
+      "headerRange": "Range",
+      "headerReturn": "Return",
+      "headerTimeline": "Timeline",
+      "realEstate": { "name": "Real Estate", "range": "$500K–$2M", "return": "Rental + Appreciation", "timeline": "2–5 years" },
+      "energy": { "name": "Energy", "range": "$750K–$3M", "return": "Long-term PPA", "timeline": "5–10 years" },
+      "business": { "name": "Business", "range": "$500K–$1.5M", "return": "Equity + Dividends", "timeline": "3–7 years" },
+      "minimumLabel": "Minimum Requirement",
+      "minimumValue": "USD 500,000",
+      "minimumCta": "BEGIN THE PROCESS",
+      "minimumDescription": "Minimum qualifying investment for Argentine citizenship by investment program. All investments fully documented and compliance-verified."
+    },
+    "support": {
+      "eyebrow": "What We Provide",
+      "titleLine1": "Complete",
+      "titleHighlight": "investment support.",
+      "vetting": { "title": "Opportunity Vetting", "body": "Every investment opportunity is verified for legal compliance, market viability, and alignment with citizenship requirements." },
+      "structuring": { "title": "Portfolio Structuring", "body": "Personalized investment allocation designed for both citizenship qualification and long-term financial objectives." },
+      "compliance": { "title": "Regulatory Compliance", "body": "Full documentation and adherence to Argentine investment regulations. Every transaction fully traceable and auditable." },
+      "exit": { "title": "Exit Strategy Planning", "body": "Clear exit pathways established at investment initiation. Capital repatriation and liquidity options built into every portfolio." }
     }
   },
   "vips": {
-    "placeholder": {
-      "title": "VIP experiences under review.",
-      "body": "Spec 06 will define the bespoke program.",
-      "cta": "Request consultation"
+    "header": {
+      "backgroundWord": "EXPERIENCE",
+      "eyebrow": "While you wait",
+      "titleLine1": "Argentina.",
+      "titleLine2": "Experienced differently.",
+      "subtitle": "Private accommodation, curated travel and white-glove concierge throughout your stay."
+    },
+    "experiences": {
+      "eyebrow": "VIP & Experiences",
+      "titleLine1": "Argentina.",
+      "titleLine2": "Experienced differently.",
+      "wine": {
+        "title": "Wine & Gastronomy",
+        "body": "Private vineyard tours, exclusive tastings, and reservations at Argentina's most distinguished restaurants."
+      },
+      "polo": {
+        "title": "Polo & Equestrian",
+        "body": "Access to private polo clubs, horseback riding across estancias, and VIP seating at championship matches."
+      },
+      "culture": {
+        "title": "Culture & Arts",
+        "body": "Private tango lessons, exclusive access to Teatro Colón, and curated contemporary art gallery tours."
+      },
+      "patagonia": {
+        "title": "Patagonia & Adventure",
+        "body": "Helicopter glacier tours, private lodge accommodations, and guided expeditions across Argentina's wilderness."
+      }
+    },
+    "concierge": {
+      "eyebrow": "Concierge Services",
+      "titleLine1": "Every detail.",
+      "titleHighlight": "Managed.",
+      "accommodation": {
+        "title": "Accommodation",
+        "body": "Premium hotels, serviced apartments, and private residences. Fully vetted properties in Buenos Aires and beyond."
+      },
+      "transportation": {
+        "title": "Transportation",
+        "body": "Private drivers, executive vehicles, and helicopter transfers. Secure, discreet, on-demand."
+      },
+      "culturalAccess": {
+        "title": "Cultural Access",
+        "body": "Exclusive access to Argentina's cultural institutions, private collections, and VIP event invitations."
+      },
+      "personal": {
+        "title": "Personal Services",
+        "body": "Medical introductions, educational facility tours, translation services, and ongoing support."
+      },
+      "lifestyle": {
+        "title": "Lifestyle Management",
+        "body": "Restaurant reservations, spa bookings, fitness facilities, and personal shopping assistance."
+      },
+      "family": {
+        "title": "Family Services",
+        "body": "Childcare, education consultations, family activities, and age-appropriate cultural programming."
+      }
+    },
+    "quote": {
+      "text": "Every detail managed. Every preference anticipated.",
+      "description": "This is not tourism. It's white-glove support designed for clients who value discretion, precision and immediate solutions.",
+      "attribution": "Argentina Passport"
     }
   },
   "contact": {
