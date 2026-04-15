@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 type LogoVariant = "monogram" | "vertical" | "horizontal";
@@ -9,45 +11,37 @@ type LogoProps = {
   className?: string;
 };
 
-const viewBoxes: Record<LogoVariant, string> = {
-  monogram: "0 0 64 64",
-  vertical: "0 0 80 96",
-  horizontal: "0 0 160 64",
+/*
+ * Sizes reflect the natural proportions of each variant.
+ * The horizontal imagotipo asset from Figma is used as the primary logo.
+ * Additional variant assets (monogram, vertical) to be added when delivered by Synera.
+ */
+const logoAssets: Record<LogoVariant, Record<LogoTheme, { src: string; width: number; height: number }>> = {
+  horizontal: {
+    negative: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+    positive: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+  },
+  vertical: {
+    negative: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+    positive: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+  },
+  monogram: {
+    negative: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+    positive: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
+  },
 };
 
-export function Logo({ variant = "monogram", theme = "negative", className }: LogoProps) {
-  const fill = theme === "negative" ? "currentColor" : "#1A3557";
+export function Logo({ variant = "horizontal", theme = "negative", className }: LogoProps) {
+  const asset = logoAssets[variant][theme];
 
   return (
-    <svg
-      aria-hidden
-      focusable="false"
-      role="img"
-      viewBox={viewBoxes[variant]}
-      className={cn("block", className)}
-    >
-      {/* Placeholder geometric mark until official SVG assets are delivered */}
-      {variant === "monogram" && (
-        <g fill={fill}>
-          <path d="M10 8h12v48H10z" />
-          <path d="M42 8h12v48H42z" />
-          <path d="M22 28h20v8H22z" />
-        </g>
-      )}
-      {variant === "vertical" && (
-        <g fill={fill}>
-          <path d="M12 12h56v12H12z" />
-          <path d="M28 24h24v52H28z" />
-          <path d="M16 80h48v8H16z" />
-        </g>
-      )}
-      {variant === "horizontal" && (
-        <g fill={fill}>
-          <path d="M12 12h20v40H12z" />
-          <path d="M40 12h20v40H40z" />
-          <path d="M68 26h80v8H68z" />
-        </g>
-      )}
-    </svg>
+    <Image
+      src={asset.src}
+      alt="Argentina Passport"
+      width={asset.width}
+      height={asset.height}
+      className={cn("object-contain", className)}
+      priority
+    />
   );
 }

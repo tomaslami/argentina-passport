@@ -28,7 +28,10 @@
       "Bash(curl -L \"https://www.figma.com/api/mcp/asset/2360267b-60d9-45e6-8dc3-9bdee0ec7144\" -o \"public/images/vips/wine.jpg\" --silent --show-error)",
       "Bash(curl -L \"https://www.figma.com/api/mcp/asset/68c9c9fa-34f9-44f0-8f82-1cf6b46ce4e6\" -o \"public/images/vips/polo.jpg\" --silent --show-error)",
       "Bash(curl -L \"https://www.figma.com/api/mcp/asset/e176eb85-5ac0-4378-826b-a2579b567ab9\" -o \"public/images/vips/culture.jpg\" --silent --show-error)",
-      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/54111914-6337-4021-aced-39b07f91767b\" -o \"public/images/vips/patagonia.jpg\" --silent --show-error)"
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/54111914-6337-4021-aced-39b07f91767b\" -o \"public/images/vips/patagonia.jpg\" --silent --show-error)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/f487adc6-8500-4346-a79b-46e8e498e19f\" -o \"public/logo/ap-horizontal-negative.png\" --silent --show-error)",
+      "Bash(python -c \"from PIL import Image; img = Image.open\\('public/logo/ap-horizontal-negative.png'\\); print\\(img.size, img.mode\\)\")",
+      "Bash(identify public/logo/ap-horizontal-negative.png)"
     ]
   }
 }

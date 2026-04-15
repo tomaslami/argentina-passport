@@ -1,5 +1,4 @@
 ﻿"use client";
-// Reason: handles mobile navigation state and client-side hooks.
 
 import { useState } from "react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
@@ -40,7 +39,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-cream-50/10 bg-navy-900/80 backdrop-blur-md">
       <Container className="flex h-20 items-center justify-between md:h-24">
         <Link href="/" onClick={closeMenu} aria-label="Argentina Passport home">
-          <Logo className="h-10 w-10 text-cream-50" />
+          <Logo className="" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
@@ -79,7 +78,7 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           <Link href="/" onClick={closeMenu} aria-label="Argentina Passport home">
-            <Logo className="h-10 w-10 text-cream-50" />
+            <Logo className="h-10 w-auto" />
           </Link>
           <button
             type="button"

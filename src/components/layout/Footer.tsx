@@ -16,7 +16,7 @@ export async function Footer() {
     <footer className="bg-navy-900 border-t border-cream-50/10">
       <Container className="grid gap-12 py-16 text-start md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
-          <Logo className="h-10 w-10 text-cream-50" />
+          <Logo className="h-10 w-auto" />
           <p className="max-w-xs text-body text-cream-50/80">{tFooter("tagline")}</p>
           <Link href="/contact" className="inline-flex">
             <Button variant="secondary" size="md">
