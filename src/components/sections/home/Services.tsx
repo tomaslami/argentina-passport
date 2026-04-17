@@ -1,147 +1,173 @@
 "use client";
-// Reason: Uses motion/react for staggered scroll animations.
 
-import { motion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
-import { cn } from "@/lib/utils";
-import { ease, duration } from "@/lib/motion";
 
-const SERVICES = [
-  { key: "card1", number: "01" },
-  { key: "card2", number: "02" },
-  { key: "card3", number: "03" },
-] as const;
-
-/** Figma 3-color system for stacked numerals:
- *  past  (index < active) → gold-500 opacity-50
- *  active (index === active) → cream-50 (white)
- *  future (index > active)  → text-muted (gray)
- */
-function getNumberClass(numeralIndex: number, cardIndex: number): string {
-  if (numeralIndex < cardIndex) return "text-gold-500 opacity-50";
-  if (numeralIndex === cardIndex) return "text-cream-50";
-  return "text-text-muted";
-}
+const TOTAL_STEPS = 3;
+const NUMBERS = ["01", "02", "03"] as const;
+type CardKey = "card1" | "card2" | "card3";
+const CARD_KEYS: CardKey[] = ["card1", "card2", "card3"];
 
 export function ThreeServices() {
   const t = useTranslations("home.services");
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const activeStepRef = useRef(0);
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      function goToStep(index: number) {
+        activeStepRef.current = index;
+
+        gsap.to(contentRef.current, {
+          opacity: 0,
+          y: -20,
+          duration: 0.25,
+          onComplete: () => {
+            setActiveStep(index);
+            gsap.to(contentRef.current, {
+              opacity: 1,
+              y: 0,
+              duration: 0.35,
+              ease: "power2.out",
+            });
+          },
+        });
+      }
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        pin: true,
+        start: "top top",
+        end: `+=${(TOTAL_STEPS - 1) * 100}vh`,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          const newStep = Math.min(
+            TOTAL_STEPS - 1,
+            Math.floor(self.progress * TOTAL_STEPS),
+          );
+          if (newStep !== activeStepRef.current) {
+            goToStep(newStep);
+          }
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const cardKey = CARD_KEYS[activeStep] ?? "card1";
+  const bullets: string[] = [
+    t(`${cardKey}.bullet1`),
+    t(`${cardKey}.bullet2`),
+    t(`${cardKey}.bullet3`),
+    t(`${cardKey}.bullet4`),
+  ];
 
   return (
-    <section className="bg-navy-900 py-24 text-cream-50 md:py-32">
+    <section ref={sectionRef} className="bg-navy-900 py-24 text-cream-50 md:py-32">
       <Container className="space-y-16">
+
         {/* Section header */}
         <div className="space-y-4">
           <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
-          <h2 className="text-display font-light leading-tight">
-            {t("title")}
-          </h2>
+          <h2 className="text-display font-light leading-tight">{t("title")}</h2>
         </div>
 
-        {/* Cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.08 } },
-          }}
-          className="space-y-0"
+        {/* ── Desktop: single card, GSAP cross-fades content ── */}
+        <div
+          ref={contentRef}
+          className="hidden md:grid gap-10 lg:grid-cols-[130px_minmax(0,1fr)_420px] lg:gap-16"
         >
-          {SERVICES.map((service, cardIndex) => {
-            const cardKey = service.key;
-            const title = t(`${cardKey}.title`);
-            const body = t(`${cardKey}.body`);
-            const bullets = [
-              t(`${cardKey}.bullet1`),
-              t(`${cardKey}.bullet2`),
-              t(`${cardKey}.bullet3`),
-              t(`${cardKey}.bullet4`),
-            ];
+          {/* Number */}
+          <div className="leading-none" aria-hidden>
+            <span className="text-service-number font-light text-cream-50">
+              {NUMBERS[activeStep]}
+            </span>
+          </div>
 
-            return (
-              <motion.article
-                key={cardKey}
-                variants={{
-                  hidden: { opacity: 0, y: 24 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: duration.base, ease: ease.out },
-                  },
-                }}
-                className="border-t border-cream-50/10 py-16 first:border-t-0 first:pt-0"
-              >
-                {/* Card grid: [numbers | content | image] */}
-                <div className="grid gap-8 lg:grid-cols-[130px_minmax(0,1fr)_420px] lg:gap-12">
+          {/* Text content */}
+          <div className="space-y-8">
+            <h3 className="text-card-title font-light leading-tight">
+              {t(`${cardKey}.title`)}
+            </h3>
+            <p className="text-body-lg font-light text-cream-50/80">
+              {t(`${cardKey}.body`)}
+            </p>
+            <ul className="space-y-3">
+              {bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-2 text-body text-cream-50/80">
+                  <span className="shrink-0 text-gold-500" aria-hidden>—</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                  {/* Stacked number block — 128px per Figma */}
-                  <div className="flex flex-col leading-none" aria-hidden>
-                    {SERVICES.map((numeral, numeralIndex) => (
-                      <span
-                        key={numeral.key}
-                        className={cn(
-                          "text-service-number font-light",
-                          getNumberClass(numeralIndex, cardIndex),
-                        )}
-                      >
-                        {numeral.number}
-                      </span>
-                    ))}
-                  </div>
+          {/* Image slot */}
+          <div
+            className="aspect-[647/509] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+            aria-label={t(`${cardKey}.title`)}
+          />
+        </div>
 
-                  {/* Text content */}
-                  <div className="space-y-6">
-                    <h3 className="text-card-title font-light leading-tight">
-                      {title}
-                    </h3>
-                    <p className="text-body-lg font-light text-cream-50/80">
-                      {body}
-                    </p>
-                    <ul className="space-y-2">
-                      {bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-2 text-body text-cream-50/80">
-                          <span className="shrink-0 text-gold-500" aria-hidden>—</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Image slot */}
-                  <div
-                    className="aspect-[647/509] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
-                    aria-label={`${title} — imagen`}
-                  >
-                    {/*
-                      Place image file here once available:
-                        card1 → /public/images/home/legal.jpg      (documento con sello sobre escritorio)
-                        card2 → /public/images/home/investment.jpg  (skyline o paneles solares)
-                        card3 → /public/images/home/concierge.jpg   (mesa elegante al atardecer)
-
-                      Replace this div with:
-                        <Image src="/images/home/{name}.jpg" alt={title}
-                          fill className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 420px" />
-                    */}
-                  </div>
+        {/* ── Mobile: all cards stacked, no pin ── */}
+        <div className="space-y-0 md:hidden">
+          {CARD_KEYS.map((key, i) => (
+            <article
+              key={key}
+              className="border-t border-cream-50/10 py-20 first:border-t-0 first:pt-0"
+            >
+              <div className="grid gap-10">
+                <div className="leading-none" aria-hidden>
+                  <span className="text-service-number font-light text-cream-50">
+                    {NUMBERS[i]}
+                  </span>
                 </div>
-              </motion.article>
-            );
-          })}
-        </motion.div>
+                <div className="space-y-8">
+                  <h3 className="text-card-title font-light leading-tight">
+                    {t(`${key}.title`)}
+                  </h3>
+                  <p className="text-body-lg font-light text-cream-50/80">
+                    {t(`${key}.body`)}
+                  </p>
+                  <ul className="space-y-3">
+                    {(["bullet1", "bullet2", "bullet3", "bullet4"] as const).map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-body text-cream-50/80">
+                        <span className="shrink-0 text-gold-500" aria-hidden>—</span>
+                        <span>{t(`${key}.${b}`)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div
+                  className="aspect-[647/509] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+                  aria-label={t(`${key}.title`)}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
 
-        {/* Section CTA */}
+        {/* CTA */}
         <div className="flex justify-center pt-4">
           <Link href="/services">
             <Button size="lg">{t("exploreCta")}</Button>
           </Link>
         </div>
+
       </Container>
     </section>
   );

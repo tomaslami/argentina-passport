@@ -31,7 +31,7 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        {/* Steps — 3-column layout per Figma: [number | title | body] */}
+        {/* Steps — 3-column layout: [number | title | body] */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -40,7 +40,7 @@ export function HowItWorks() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } },
           }}
-          className="divide-y divide-navy-900/12"
+          className="divide-y divide-navy-900/15"
         >
           {STEPS.map((step) => (
             <motion.div
@@ -53,20 +53,20 @@ export function HowItWorks() {
                   transition: { duration: duration.base, ease: ease.out },
                 },
               }}
-              className="grid items-start gap-6 py-10 md:grid-cols-[80px_1fr_1fr] md:gap-8"
+              className="grid items-start gap-6 py-10 md:grid-cols-[100px_1fr_1fr] md:gap-10"
             >
-              {/* Number — gold, 36px */}
-              <span className="text-step font-light text-gold-500">
+              {/* Number — gold, 64px */}
+              <span className="text-h1 font-normal leading-none text-gold-500">
                 {step.number}
               </span>
 
-              {/* Title — navy, 36px medium */}
-              <h3 className="text-step font-medium text-navy-900">
+              {/* Title — navy, medium */}
+              <h3 className="text-h3 font-normal text-navy-900">
                 {t(`${step.key}.title`)}
               </h3>
 
-              {/* Body — muted, 24px */}
-              <p className="text-step-body font-light text-text-muted">
+              {/* Body — muted */}
+              <p className="text-body-lg font-light text-text-muted">
                 {t(`${step.key}.body`)}
               </p>
             </motion.div>

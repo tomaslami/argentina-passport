@@ -1,4 +1,4 @@
-﻿import { getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
@@ -13,11 +13,10 @@ export async function Footer() {
   const tNav = await getTranslations("nav");
 
   return (
-    <footer className="bg-navy-900 border-t border-cream-50/10">
+    <footer className="bg-navy-900 border-t border-gold-500">
       <Container className="grid gap-12 py-16 text-start md:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-4">
-          <Logo className="h-10 w-auto" />
-          <p className="max-w-xs text-body text-cream-50/80">{tFooter("tagline")}</p>
+        <div className="space-y-6">
+          <Logo className="h-12 w-auto" />
           <Link href="/contact" className="inline-flex">
             <Button variant="secondary" size="md">
               {tFooter("cta")}
@@ -25,15 +24,15 @@ export async function Footer() {
           </Link>
         </div>
         <div>
-          <span className="text-small uppercase tracking-[0.2em] text-cream-50/60">
+          <span className="text-small font-normal uppercase tracking-[0.12em] text-gold-500">
             {tFooter("navigation")}
           </span>
-          <nav className="mt-4 flex flex-col gap-2 text-body">
+          <nav className="mt-5 flex flex-col gap-3 text-body">
             {footerNav.map((key) => (
               <Link
                 key={key}
                 href={key === "home" ? "/" : `/${key}`}
-                className="text-cream-50/80 hover:text-cream-50"
+                className="text-cream-50/80 transition-opacity duration-200 hover:opacity-90"
               >
                 {tNav(key)}
               </Link>
@@ -41,33 +40,36 @@ export async function Footer() {
           </nav>
         </div>
         <div>
-          <span className="text-small uppercase tracking-[0.2em] text-cream-50/60">
+          <span className="text-small font-normal uppercase tracking-[0.12em] text-gold-500">
             {tFooter("contact")}
           </span>
-          <div className="mt-4 space-y-2">
-            <a href={`mailto:${tFooter("email")}`} className="text-body text-cream-50/80 hover:text-cream-50">
+          <div className="mt-5 space-y-2">
+            <a
+              href={`mailto:${tFooter("email")}`}
+              className="text-body text-slate transition-opacity duration-200 hover:opacity-90"
+            >
               {tFooter("email")}
             </a>
           </div>
         </div>
         <div>
-          <span className="text-small uppercase tracking-[0.2em] text-cream-50/60">
+          <span className="text-small font-normal uppercase tracking-[0.12em] text-gold-500">
             {tFooter("languages")}
           </span>
-          <LocaleSwitcher variant="footer" className="mt-4" />
+          <LocaleSwitcher variant="footer" className="mt-5" />
         </div>
       </Container>
-      <div className="border-t border-cream-50/10">
-        <Container className="flex flex-col gap-4 py-6 text-small text-cream-50/70 lg:flex-row lg:items-center lg:justify-between">
+      <div className="border-t border-gold-500 bg-navy-deep">
+        <Container className="flex flex-col gap-4 py-6 text-small text-slate lg:flex-row lg:items-center lg:justify-between">
           <span>{tFooter("copyright")}</span>
-          <div className="flex items-center gap-3 text-cream-50/70">
+          <div className="flex items-center gap-3">
             <span>{tFooter("privacyPolicy")}</span>
             <span>·</span>
             <span>{tFooter("terms")}</span>
             <span>·</span>
             <span>{tFooter("cookies")}</span>
           </div>
-          <a href="https://synera.dev" target="_blank" rel="noreferrer" className="text-cream-50 hover:text-gold-500">
+          <a href="https://synera.dev" target="_blank" rel="noreferrer" className="text-cream-50/70 transition-opacity duration-200 hover:opacity-90">
             {tFooter("designedBy")}
           </a>
         </Container>

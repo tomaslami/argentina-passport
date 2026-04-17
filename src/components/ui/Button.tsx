@@ -8,12 +8,13 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold-500 text-navy-900 hover:bg-gold-400 transition-colors duration-200",
+    "bg-gold-500 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
   secondary:
-    "border border-cream-50/30 text-cream-50 hover:bg-cream-50/10 transition-colors duration-200",
-  ghost: "text-gold-500 hover:text-gold-400 transition-colors duration-200",
+    "border border-cream-50/30 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+  ghost:
+    "text-gold-500 transition-opacity duration-200 hover:opacity-80 active:opacity-70",
   inverse:
-    "bg-navy-900 text-cream-50 hover:bg-navy-800 transition-colors duration-200",
+    "bg-cream-50 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

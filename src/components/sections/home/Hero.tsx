@@ -28,9 +28,9 @@ export function HomeHero() {
             fill priority className="object-cover" sizes="100vw" />
       */}
 
-      {/* Gradient overlay — identical to Figma (bottom-up) */}
+      {/* Gradient overlay — Figma: top 10% navy → bottom solid navy */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-navy-900/30"
+        className="absolute inset-0 bg-gradient-to-b from-[rgba(23,53,87,0.1)] via-navy-900/70 to-navy-900"
         aria-hidden
       />
 

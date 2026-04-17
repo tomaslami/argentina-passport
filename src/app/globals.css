@@ -29,20 +29,24 @@
   --text-service-number--line-height: 1;
   --text-card-title: 4rem;          /* 64px — títulos de cards de servicio */
   --text-card-title--line-height: 1.1;
-  --text-stat: 3rem;                /* 48px — valores del StatsBar */
+  --text-stat: 3rem;                /* 48px — valores del StatsBar (mobile) */
   --text-stat--line-height: 1;
+  --text-stat-lg: 4.5rem;           /* 72px — valores del StatsBar (desktop, design system) */
+  --text-stat-lg--line-height: 1;
   --text-step: 2.25rem;             /* 36px — números y títulos How it works */
   --text-step--line-height: 1.2;
   --text-step-body: 1.5rem;         /* 24px — cuerpo de pasos How it works */
   --text-step-body--line-height: 1.6;
 
-  /* Color tokens */
-  --color-navy-900: #1a3557;
+  /* Color tokens (Figma-exact values) */
+  --color-navy-900: #173557;
+  --color-navy-deep: #111b26;
   --color-navy-800: #21405f;
   --color-navy-700: #2a4a6b;
-  --color-gold-500: #c9a84c;
+  --color-gold-500: #caa94d;
   --color-gold-400: #d4b968;
-  --color-cream-50: #f7f4ef;
+  --color-cream-50: #f7f4ee;
+  --color-slate: #8794a2;
   --color-text-muted: #5c6e84;
 
   /* Focus */

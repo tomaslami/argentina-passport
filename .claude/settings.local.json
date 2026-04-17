@@ -31,7 +31,24 @@
       "Bash(curl -L \"https://www.figma.com/api/mcp/asset/54111914-6337-4021-aced-39b07f91767b\" -o \"public/images/vips/patagonia.jpg\" --silent --show-error)",
       "Bash(curl -L \"https://www.figma.com/api/mcp/asset/f487adc6-8500-4346-a79b-46e8e498e19f\" -o \"public/logo/ap-horizontal-negative.png\" --silent --show-error)",
       "Bash(python -c \"from PIL import Image; img = Image.open\\('public/logo/ap-horizontal-negative.png'\\); print\\(img.size, img.mode\\)\")",
-      "Bash(identify public/logo/ap-horizontal-negative.png)"
+      "Bash(identify public/logo/ap-horizontal-negative.png)",
+      "Bash(mkdir -p /tmp/design-system)",
+      "Read(//tmp/**)",
+      "Bash(unzip -o \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/Argentina Passport Design System.zip\")",
+      "Bash(mkdir -p \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/public/images/contact\")",
+      "Bash(mkdir -p \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/public/icons\")",
+      "Bash(cp /tmp/design-system/assets/cta-background.jpg \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/public/images/cta-background.jpg\")",
+      "Bash(cp /tmp/design-system/assets/contact-hero.jpg \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/public/images/contact/contact-hero.jpg\")",
+      "Bash(cp /tmp/design-system/assets/contact-image.jpg \"/c/Users/tomas/OneDrive/Documentos/synera/argentina-passport/public/images/contact/contact-image.jpg\")",
+      "Bash(git restore *)",
+      "mcp__Figma__get_design_context",
+      "WebFetch(domain:www.awwwards.com)",
+      "WebFetch(domain:fooror.com)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(pnpm add *)",
+      "Bash(pnpm install *)",
+      "Bash(node -e \"const m = require\\('./messages/en.json'\\); console.log\\(JSON.stringify\\(m['home']['services'], null, 2\\)\\)\")",
+      "Bash(node -e \"const m = require\\('./src/messages/en.json'\\); console.log\\(JSON.stringify\\(m['home']['services'], null, 2\\)\\)\")"
     ]
   }
 }

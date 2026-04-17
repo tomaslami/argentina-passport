@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
@@ -25,17 +25,17 @@ export async function CTABanner({
   subtitleKey,
   ctaKey,
   ctaHref = "/contact",
-  backgroundImage = "/images/cta-patagonia.png",
+  backgroundImage = "/images/cta-background.jpg",
   className,
 }: CTABannerProps) {
   const t = await getTranslations();
   const subtitle = subtitleKey ? t(subtitleKey) : null;
 
   return (
-    <section className={cn("relative isolate py-24", className)}>
+    <section className={cn("relative isolate py-32 md:py-36", className)}>
       <Image
         src={backgroundImage}
-        alt="View of Patagonian mountains and lake"
+        alt="Argentine landscape"
         fill
         sizes="100vw"
         className="object-cover"
@@ -44,15 +44,16 @@ export async function CTABanner({
       <div className="absolute inset-0 bg-navy-900/80" aria-hidden />
       <Container className="relative z-10 text-center">
         <SectionEyebrow>{t(eyebrowKey)}</SectionEyebrow>
-        <h2 className="mt-4 text-h2 font-light text-cream-50">
-          {t(titleKey)} <span className="text-gold-500">{t(highlightKey)}</span>
+        <h2 className="mt-6 text-h1 font-normal leading-tight text-cream-50">
+          {t(titleKey)}{" "}
+          <span className="text-gold-500">{t(highlightKey)}</span>
         </h2>
         {subtitle ? (
-          <p className="mt-4 text-body text-cream-50/80 text-balance">
+          <p className="mt-6 text-body-lg font-light text-cream-50/80 text-balance">
             {subtitle}
           </p>
         ) : null}
-        <Link href={ctaHref} className="mt-8 inline-flex">
+        <Link href={ctaHref} className="mt-10 inline-flex">
           <Button size="lg">{t(ctaKey)}</Button>
         </Link>
       </Container>

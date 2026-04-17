@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 // Reason: animates counters on scroll using motion/react hooks.
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -16,6 +16,8 @@ type StatConfig = {
   valueKey: string;
   labelKey: string;
   countKey?: string;
+  /** gold = accent color; cream = neutral light */
+  color: "gold" | "cream";
 };
 
 const STATS: StatConfig[] = [
@@ -23,32 +25,37 @@ const STATS: StatConfig[] = [
     kind: "text",
     valueKey: "stats.languagesValue",
     labelKey: "stats.languagesLabel",
+    color: "cream",
   },
   {
     kind: "text",
     valueKey: "stats.stabilityValue",
     labelKey: "stats.stabilityLabel",
+    color: "cream",
   },
   {
     kind: "counter",
     valueKey: "stats.investmentValue",
     countKey: "stats.investmentCount",
     labelKey: "stats.investmentLabel",
+    color: "gold",
   },
   {
     kind: "counter",
     valueKey: "stats.visaFreeValue",
     countKey: "stats.visaFreeCount",
     labelKey: "stats.visaFreeLabel",
+    color: "gold",
   },
 ];
 
 type CounterProps = {
   template: string;
   target: number;
+  className?: string;
 };
 
-function AnimatedCounter({ template, target }: CounterProps) {
+function AnimatedCounter({ template, target, className }: CounterProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(spanRef, { once: true, margin: "-100px" });
   const [display, setDisplay] = useState(template);
@@ -79,7 +86,7 @@ function AnimatedCounter({ template, target }: CounterProps) {
   }, [isInView, prefix, suffix, target]);
 
   return (
-    <span ref={spanRef} className="text-stat font-medium text-gold-500">
+    <span ref={spanRef} className={className}>
       {display}
     </span>
   );
@@ -93,23 +100,36 @@ export function StatsBar({ className }: StatsBarProps) {
   const t = useTranslations();
 
   return (
-    <section className={cn("bg-navy-800 py-12 md:py-16", className)}>
+    <section className={cn("bg-navy-800 py-16 md:py-20", className)}>
       <Container>
-        <div className="grid gap-10 text-center md:grid-cols-2 lg:grid-cols-4">
-          {STATS.map((stat) => {
+        <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-y-0">
+          {STATS.map((stat, index) => {
             const label = t(stat.labelKey);
             const valueTemplate = t(stat.valueKey);
+            const isLast = index === STATS.length - 1;
+            const valueClass = cn(
+              "text-stat font-normal md:text-stat-lg leading-none",
+              stat.color === "gold" ? "text-gold-500" : "text-cream-50",
+            );
+
             return (
-              <div key={stat.labelKey} className="flex flex-col items-center gap-3">
+              <div
+                key={stat.labelKey}
+                className={cn(
+                  "flex flex-col items-center gap-4 text-center",
+                  !isLast && "lg:border-r lg:border-gold-500/30",
+                )}
+              >
                 {stat.kind === "counter" && stat.countKey ? (
                   <AnimatedCounter
                     template={valueTemplate}
                     target={Number(t(stat.countKey))}
+                    className={valueClass}
                   />
                 ) : (
-                  <span className="text-stat font-medium text-gold-500">{valueTemplate}</span>
+                  <span className={valueClass}>{valueTemplate}</span>
                 )}
-                <span className="text-small uppercase tracking-[0.2em] text-cream-50/80">
+                <span className="text-small uppercase tracking-[0.08em] text-slate">
                   {label}
                 </span>
               </div>
