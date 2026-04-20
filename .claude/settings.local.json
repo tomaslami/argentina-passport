@@ -48,7 +48,10 @@
       "Bash(pnpm add *)",
       "Bash(pnpm install *)",
       "Bash(node -e \"const m = require\\('./messages/en.json'\\); console.log\\(JSON.stringify\\(m['home']['services'], null, 2\\)\\)\")",
-      "Bash(node -e \"const m = require\\('./src/messages/en.json'\\); console.log\\(JSON.stringify\\(m['home']['services'], null, 2\\)\\)\")"
+      "Bash(node -e \"const m = require\\('./src/messages/en.json'\\); console.log\\(JSON.stringify\\(m['home']['services'], null, 2\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(file public/logo/*.png)"
     ]
   }
 }

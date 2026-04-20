@@ -53,7 +53,7 @@ export function HowItWorks() {
                   transition: { duration: duration.base, ease: ease.out },
                 },
               }}
-              className="grid items-start gap-6 py-10 md:grid-cols-[100px_1fr_1fr] md:gap-10"
+              className="grid cursor-default items-center gap-6 rounded-none px-4 py-10 transition-colors duration-300 hover:bg-slate/10 md:-mx-4 md:grid-cols-[100px_1fr_1fr] md:gap-10 md:px-4"
             >
               {/* Number — gold, 64px */}
               <span className="text-h1 font-normal leading-none text-gold-500">
@@ -76,7 +76,7 @@ export function HowItWorks() {
         {/* CTA — navy bg + cream text (Figma "inverse" style) */}
         <div className="flex justify-center pt-4">
           <Link href="/process">
-            <Button variant="inverse" size="lg">
+            <Button variant="navy" size="md">
               {t("fullProcessCta")}
             </Button>
           </Link>

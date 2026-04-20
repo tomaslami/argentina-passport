@@ -25,13 +25,13 @@ const STATS: StatConfig[] = [
     kind: "text",
     valueKey: "stats.languagesValue",
     labelKey: "stats.languagesLabel",
-    color: "cream",
+    color: "gold",
   },
   {
     kind: "text",
     valueKey: "stats.stabilityValue",
     labelKey: "stats.stabilityLabel",
-    color: "cream",
+    color: "gold",
   },
   {
     kind: "counter",
@@ -100,24 +100,24 @@ export function StatsBar({ className }: StatsBarProps) {
   const t = useTranslations();
 
   return (
-    <section className={cn("bg-navy-800 py-16 md:py-20", className)}>
+    <section className={cn("bg-navy-800 py-6 md:py-8", className)}>
       <Container>
-        <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-y-0">
+        <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4 lg:gap-y-0">
           {STATS.map((stat, index) => {
             const label = t(stat.labelKey);
             const valueTemplate = t(stat.valueKey);
             const isLast = index === STATS.length - 1;
             const valueClass = cn(
-              "text-stat font-normal md:text-stat-lg leading-none",
-              stat.color === "gold" ? "text-gold-500" : "text-cream-50",
+              "text-h2 font-normal leading-none",
+              "text-gold-500",
             );
 
             return (
               <div
                 key={stat.labelKey}
                 className={cn(
-                  "flex flex-col items-center gap-4 text-center",
-                  !isLast && "lg:border-r lg:border-gold-500/30",
+                  "flex flex-col items-center gap-2 text-center",
+                  !isLast && "lg:border-r lg:border-cream-50/10",
                 )}
               >
                 {stat.kind === "counter" && stat.countKey ? (
@@ -129,7 +129,7 @@ export function StatsBar({ className }: StatsBarProps) {
                 ) : (
                   <span className={valueClass}>{valueTemplate}</span>
                 )}
-                <span className="text-small uppercase tracking-[0.08em] text-slate">
+                <span className="text-eyebrow uppercase tracking-[0.1em] text-cream-50/55">
                   {label}
                 </span>
               </div>

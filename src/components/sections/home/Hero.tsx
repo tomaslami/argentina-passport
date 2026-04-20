@@ -1,5 +1,4 @@
 "use client";
-// Reason: Uses motion/react for hero entrance animations and useReducedMotion hook.
 
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -18,56 +17,58 @@ export function HomeHero() {
 
   return (
     <section
-      className="relative isolate flex min-h-screen items-end bg-navy-900 text-cream-50"
+      className="relative isolate flex h-screen items-end bg-navy-900 text-cream-50"
       aria-label="Hero"
     >
-      {/*
-        Background: place /public/images/home/hero-skyline.jpg (1920×1080, Buenos Aires skyline at dusk).
-        Once available, replace this comment with:
-          <Image src="/images/home/hero-skyline.jpg" alt="Buenos Aires skyline at dusk"
-            fill priority className="object-cover" sizes="100vw" />
-      */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden
+      >
+        <source src="/background.mp4" type="video/mp4" />
+      </video>
 
-      {/* Gradient overlay — Figma: top 10% navy → bottom solid navy */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[rgba(23,53,87,0.1)] via-navy-900/70 to-navy-900"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(23, 53, 87, 0.10) 9.21%, #173557 100%)",
+        }}
         aria-hidden
       />
 
-      <Container className="relative z-10 py-24">
-        <div className="max-w-3xl space-y-8">
-          {/* H1 semántico — una sola etiqueta, dos weights como en el Figma */}
+      <Container className="relative z-10 py-16 md:py-24">
+        <div className="max-w-[760px] space-y-8">
           <motion.h1
             initial={initial}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.1 }}
-            className="text-display leading-tight"
+            className="text-display leading-none text-cream-50"
           >
-            <span className="block font-extralight text-cream-50">
-              {t("titleLine1")}
-            </span>
-            <span className="block font-medium text-gold-500">
-              {t("titleLine2")}
-            </span>
+            <span className="block font-extralight">{t("titleLine1")}</span>
+            <span className="block font-medium">{t("titleLine2")}</span>
           </motion.h1>
 
+          {/* Subtitle: 20px regular — Figma node 20-43 */}
           <motion.p
             initial={initialFade}
             animate={{ opacity: 1 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.3 }}
-            className="max-w-[560px] text-body-lg font-light text-cream-50/85"
+            className="text-h4 max-w-[560px] font-normal text-cream-50"
           >
             {t("subtitle")}
           </motion.p>
-
           <motion.div
             initial={initial}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.5 }}
           >
             <Link href="/contact">
-              {/* secondary: borde blanco + texto blanco — igual al Figma */}
-              <Button variant="secondary" size="lg">
+              <Button variant="secondary" size="md" className="px-6 py-4">
                 {t("cta")}
               </Button>
             </Link>

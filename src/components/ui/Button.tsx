@@ -3,18 +3,21 @@ import type { ButtonHTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse" | "navy";
 type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-gold-500 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
   secondary:
-    "border border-cream-50/30 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+    "border border-cream-50 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
   ghost:
     "text-gold-500 transition-opacity duration-200 hover:opacity-80 active:opacity-70",
   inverse:
     "bg-cream-50 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+  // Scrolled nav: navy bg + cream text (Figma node 20-78)
+  navy:
+    "bg-navy-900 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

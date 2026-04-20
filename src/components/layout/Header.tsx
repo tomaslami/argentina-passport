@@ -1,11 +1,10 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { Logo } from "@/components/layout/Logo";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -32,61 +31,110 @@ export function Header() {
   const pathname = usePathname();
   const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-cream-50/10 bg-navy-900/80 backdrop-blur-md">
-      <Container className="flex h-20 items-center justify-between md:h-24">
-        <Link href="/" onClick={closeMenu} aria-label="Argentina Passport home">
-          <Logo className="" />
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-[background-color,box-shadow] duration-500 ease-out",
+        scrolled ? "bg-cream-50 shadow-sm" : "bg-transparent",
+      )}
+    >
+      <div className="relative flex h-16 items-center justify-between px-6 md:h-[80px] md:px-12 lg:px-20">
+        {/* Logo */}
+        <Link
+          href="/"
+          onClick={closeMenu}
+          aria-label="Argentina Passport home"
+          className="relative z-10 transition-opacity duration-300 hover:opacity-70"
+        >
+          <Logo
+            theme={scrolled ? "positive" : "negative"}
+            className="h-9 w-auto md:h-12"
+          />
         </Link>
-        <nav className="hidden items-center gap-8 lg:flex">
+
+        {/* Centered nav — full white by default, dims on hover */}
+        <nav className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex">
           {links.map((link) => (
             <Link
               key={link.key}
               href={link.href}
               className={cn(
-                "text-body uppercase tracking-[0.2em] text-cream-50/80 transition-colors duration-200",
-                pathname === link.href && "border-b-2 border-gold-500 pb-2 text-cream-50",
+                "pointer-events-auto text-small font-normal uppercase tracking-wider transition-opacity duration-300",
+                scrolled
+                  ? cn(
+                      "text-navy-900 hover:opacity-50",
+                      pathname === link.href &&
+                        "border-b border-navy-900 pb-0.5 opacity-100",
+                    )
+                  : cn(
+                      "text-cream-50 hover:opacity-50",
+                      pathname === link.href &&
+                        "border-b border-gold-500 pb-0.5 opacity-100",
+                    ),
               )}
             >
               {t(link.key)}
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-6 lg:flex">
-          <LocaleSwitcher />
+
+        {/* Right controls */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <LocaleSwitcher variant="dropdown" theme={scrolled ? "dark" : "light"} />
           <Link href="/contact">
-            <Button size="md">{t("contact")}</Button>
+            <Button
+              variant={scrolled ? "navy" : "secondary"}
+              size="sm"
+              className="h-9 px-5 tracking-widest"
+            >
+              {t("contact")}
+            </Button>
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
         <button
           type="button"
-          className="inline-flex items-center justify-center text-cream-50 lg:hidden cursor-pointer"
+          className={cn(
+            "inline-flex cursor-pointer items-center justify-center transition-opacity duration-300 hover:opacity-60 lg:hidden",
+            scrolled ? "text-navy-900" : "text-cream-50",
+          )}
           onClick={() => setIsOpen(true)}
           aria-label="Open navigation"
         >
-          <IconMenu2 size={28} stroke={1.25} />
+          <IconMenu2 size={24} stroke={1.25} />
         </button>
-      </Container>
+      </div>
+
+      {/* Mobile fullscreen overlay */}
       <div
         className={cn(
-          "fixed inset-0 flex h-full flex-col bg-navy-900/95 px-6 py-10 transition-opacity duration-200 lg:hidden",
+          "fixed inset-0 flex h-full flex-col bg-navy-900/95 px-6 py-10 transition-opacity duration-300 ease-out lg:hidden",
           isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
       >
         <div className="flex items-center justify-between">
           <Link href="/" onClick={closeMenu} aria-label="Argentina Passport home">
-            <Logo className="h-10 w-auto" />
+            <Logo theme="negative" className="h-9 w-auto" />
           </Link>
           <button
             type="button"
             onClick={closeMenu}
             aria-label="Close navigation"
-            className="text-cream-50 cursor-pointer"
+            className="cursor-pointer text-cream-50 transition-opacity duration-300 hover:opacity-60"
           >
-            <IconX size={28} stroke={1.25} />
+            <IconX size={24} stroke={1.25} />
           </button>
         </div>
         <div className="mt-10 flex flex-col gap-6 text-h3 font-light">
@@ -95,13 +143,13 @@ export function Header() {
               key={link.key}
               href={link.href}
               onClick={closeMenu}
-              className="text-cream-50"
+              className="text-cream-50 transition-opacity duration-300 hover:opacity-60"
             >
               {t(link.key)}
             </Link>
           ))}
           <Link href="/contact" onClick={closeMenu}>
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="md">
               {t("contact")}
             </Button>
           </Link>

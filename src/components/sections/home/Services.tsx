@@ -152,20 +152,15 @@ export function ThreeServices() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[100svh] overflow-hidden bg-navy-900 text-cream-50"
+      className="relative h-svh overflow-hidden bg-navy-900 text-cream-50"
     >
-      <Container className="flex h-full flex-col py-5 md:py-7 lg:py-9">
+      <Container className="flex h-full flex-col py-4 md:py-5 lg:py-6">
         {/* ── Compact header ────────────────────────────────────────────────── */}
-        <div className="flex shrink-0 items-end justify-between gap-6 pb-4 md:pb-6 lg:pb-8">
-          <div className="space-y-1.5 md:space-y-2">
-            <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
-            <h2 className="text-h4 font-light leading-tight md:text-h3 lg:text-h2">
-              {t("title")}
-            </h2>
-          </div>
-          <Link href="/services" className="hidden shrink-0 md:block">
-            <Button size="md">{t("exploreCta")}</Button>
-          </Link>
+        <div className="shrink-0 space-y-1.5 pb-4 md:space-y-2 md:pb-5 lg:pb-6">
+          <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
+          <h2 className="text-h4 font-light leading-tight md:text-h3 lg:text-h2">
+            {t("title")}
+          </h2>
         </div>
 
         {/* ── Desktop: centered stage ───────────────────────────────────────── */}
@@ -197,7 +192,7 @@ export function ThreeServices() {
             </div>
 
             {/* Content column — all 3 stacked in the same cell */}
-            <div className="relative min-h-[clamp(220px,36vh,320px)]">
+            <div className="relative min-h-[clamp(180px,30vh,280px)]">
               {CARD_KEYS.map((key: CardKey, i) => (
                 <div
                   key={key}
@@ -245,8 +240,8 @@ export function ThreeServices() {
                   }}
                   className={
                     i === 0
-                      ? "aspect-[647/509] max-h-[48vh] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
-                      : "absolute inset-0 aspect-[647/509] max-h-[48vh] overflow-hidden border border-cream-50/10 bg-navy-800"
+                      ? "aspect-647/509 max-h-[48vh] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+                      : "absolute inset-0 aspect-647/509 max-h-[48vh] overflow-hidden border border-cream-50/10 bg-navy-800"
                   }
                   role="img"
                   aria-label={t(`${key}.title`)}
@@ -256,16 +251,21 @@ export function ThreeServices() {
           </div>
         </div>
 
-        {/* ── Stage progress indicator ──────────────────────────────────────── */}
-        <div className="hidden shrink-0 justify-center gap-3 pt-4 md:flex lg:pt-6">
-          {CARD_KEYS.map((key, i) => (
-            <span
-              key={key}
-              className="h-px w-10 bg-cream-50/20"
-              data-progress-dot={i}
-              aria-hidden
-            />
-          ))}
+        {/* ── Stage progress indicator + CTA ──────────────────────────────── */}
+        <div className="hidden shrink-0 flex-col items-center gap-4 pt-3 md:flex lg:pt-4">
+          <div className="flex gap-3">
+            {CARD_KEYS.map((key, i) => (
+              <span
+                key={key}
+                className="h-px w-10 bg-cream-50/20"
+                data-progress-dot={i}
+                aria-hidden
+              />
+            ))}
+          </div>
+          <Link href="/services">
+            <Button size="md">{t("exploreCta")}</Button>
+          </Link>
         </div>
 
         {/* ── Mobile fallback: stacked cards (non-pinned) ───────────────────── */}
@@ -299,7 +299,7 @@ export function ThreeServices() {
                   ))}
                 </ul>
                 <div
-                  className="aspect-[647/509] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+                  className="aspect-647/509 w-full overflow-hidden border border-cream-50/10 bg-navy-800"
                   role="img"
                   aria-label={t(`${key}.title`)}
                 />

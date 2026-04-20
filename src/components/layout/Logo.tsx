@@ -12,35 +12,40 @@ type LogoProps = {
 };
 
 /*
- * Sizes reflect the natural proportions of each variant.
- * The horizontal imagotipo asset from Figma is used as the primary logo.
- * Additional variant assets (monogram, vertical) to be added when delivered by Synera.
+ * Single source file (262×100 tight crop) for all variants.
+ * Color is controlled via CSS filter:
+ *   positive = black logo as-is (for light/cream bg)
+ *   negative = brightness(0) invert(1) → white logo (for dark/navy bg)
+ * This guarantees both themes render at identical pixel dimensions.
  */
-const logoAssets: Record<LogoVariant, Record<LogoTheme, { src: string; width: number; height: number }>> = {
-  horizontal: {
-    negative: { src: "/logo/logo-wordmark.png", width: 1200, height: 300 },
-    positive: { src: "/logo/logo-wordmark.png", width: 1200, height: 300 },
-  },
-  vertical: {
-    negative: { src: "/logo/logo-wordmark.png", width: 1200, height: 300 },
-    positive: { src: "/logo/logo-wordmark.png", width: 1200, height: 300 },
-  },
-  monogram: {
-    negative: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
-    positive: { src: "/logo/ap-horizontal-negative.png", width: 1601, height: 901 },
-  },
+const logoSrc: Record<LogoVariant, string> = {
+  horizontal: "/logo/ap-horizontal-negative-black.png",
+  vertical: "/logo/ap-horizontal-negative-black.png",
+  monogram: "/logo/ap-horizontal-negative-black.png",
+};
+
+const logoSize: Record<LogoVariant, { width: number; height: number }> = {
+  horizontal: { width: 262, height: 100 },
+  vertical: { width: 262, height: 100 },
+  monogram: { width: 262, height: 100 },
 };
 
 export function Logo({ variant = "horizontal", theme = "negative", className }: LogoProps) {
-  const asset = logoAssets[variant][theme];
+  const src = logoSrc[variant];
+  const { width, height } = logoSize[variant];
 
   return (
     <Image
-      src={asset.src}
+      src={src}
       alt="Argentina Passport"
-      width={asset.width}
-      height={asset.height}
-      className={cn("object-contain", className)}
+      width={width}
+      height={height}
+      className={cn(
+        "object-contain object-left transition-[filter] duration-500",
+        // negative = white logo for dark backgrounds
+        theme === "negative" ? "brightness-0 invert" : "",
+        className,
+      )}
       priority
     />
   );

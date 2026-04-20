@@ -16,7 +16,7 @@ export async function Footer() {
     <footer className="bg-navy-900 border-t border-gold-500">
       <Container className="grid gap-12 py-16 text-start md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-6">
-          <Logo className="h-12 w-auto" />
+          <Logo className="" />
           <Link href="/contact" className="inline-flex">
             <Button variant="secondary" size="md">
               {tFooter("cta")}
@@ -69,7 +69,7 @@ export async function Footer() {
             <span>·</span>
             <span>{tFooter("cookies")}</span>
           </div>
-          <a href="https://synera.dev" target="_blank" rel="noreferrer" className="text-cream-50/70 transition-opacity duration-200 hover:opacity-90">
+          <a href="https://synera.com.ar" target="_blank" rel="noreferrer" className="text-cream-50/70 transition-opacity duration-200 hover:opacity-90">
             {tFooter("designedBy")}
           </a>
         </Container>
