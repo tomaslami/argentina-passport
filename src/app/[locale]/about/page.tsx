@@ -7,11 +7,11 @@ import { StatsBar } from "@/components/sections/StatsBar";
 import { CTABanner } from "@/components/sections/CTABanner";
 
 type AboutPageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function AboutPage({ params }: AboutPageProps) {
-  const { locale } = params;
+export default async function AboutPage({ params }: AboutPageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

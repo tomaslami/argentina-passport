@@ -7,11 +7,12 @@ import { QuoteBlock } from "@/components/sections/vips/QuoteBlock";
 import { CTABanner } from "@/components/sections/CTABanner";
 
 type PageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function VipsPage({ params }: PageProps) {
-  setRequestLocale(params.locale);
+export default async function VipsPage({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <>

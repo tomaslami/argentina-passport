@@ -6,11 +6,11 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { Container } from "@/components/ui/Container";
 
 type ProcessPageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function ProcessPage({ params }: ProcessPageProps) {
-  const { locale } = params;
+export default async function ProcessPage({ params }: ProcessPageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

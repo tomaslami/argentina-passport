@@ -3,11 +3,12 @@
 import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
 
 type PageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function ContactPage({ params }: PageProps) {
-  setRequestLocale(params.locale);
+export default async function ContactPage({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <PagePlaceholder

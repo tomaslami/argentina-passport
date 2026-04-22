@@ -24,6 +24,7 @@ const BULLETS = ["bullet1", "bullet2", "bullet3", "bullet4"] as const;
 export function ThreeServices() {
   const t = useTranslations("home.services");
   const sectionRef = useRef<HTMLElement>(null);
+  const pinWrapperRef = useRef<HTMLDivElement>(null);
 
   const numRefs = useRef<(HTMLSpanElement | null)[]>([null, null, null]);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
@@ -31,6 +32,7 @@ export function ThreeServices() {
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
+    if (!sectionRef.current || !pinWrapperRef.current) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +43,9 @@ export function ThreeServices() {
 
       const dots = sectionRef.current
         ? Array.from(
-            sectionRef.current.querySelectorAll<HTMLElement>("[data-progress-dot]"),
+            sectionRef.current.querySelectorAll<HTMLElement>(
+              "[data-progress-dot]",
+            ),
           )
         : [];
 
@@ -66,7 +70,8 @@ export function ThreeServices() {
           trigger: sectionRef.current,
           start: "top top",
           end: `+=${CARD_KEYS.length * VH_PER_STAGE}vh`,
-          pin: true,
+          pin: pinWrapperRef.current,
+          pinType: "transform",
           scrub: SCRUB,
           anticipatePin: 1,
         },
@@ -150,74 +155,147 @@ export function ThreeServices() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative h-svh overflow-hidden bg-navy-900 text-cream-50"
-    >
-      <Container className="flex h-full flex-col py-4 md:py-5 lg:py-6">
-        {/* ── Compact header ────────────────────────────────────────────────── */}
-        <div className="shrink-0 space-y-1.5 pb-4 md:space-y-2 md:pb-5 lg:pb-6">
-          <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
-          <h2 className="text-h4 font-light leading-tight md:text-h3 lg:text-h2">
-            {t("title")}
-          </h2>
-        </div>
+    <section ref={sectionRef} className="relative bg-navy-900 text-cream-50">
+      <div ref={pinWrapperRef} className="relative h-svh overflow-hidden">
+        <Container className="flex h-full flex-col py-4 md:py-5 lg:py-6">
+          {/* ── Compact header ────────────────────────────────────────────────── */}
+          <div className="shrink-0 space-y-1.5 pb-4 md:space-y-2 md:pb-5 lg:pb-6">
+            <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
+            <h2 className="text-h4 font-light leading-tight md:text-h3 lg:text-h2">
+              {t("title")}
+            </h2>
+          </div>
 
-        {/* ── Desktop: centered stage ───────────────────────────────────────── */}
-        <div className="hidden min-h-0 flex-1 items-center md:flex">
-          <div className="grid w-full grid-cols-[auto_minmax(0,1fr)_clamp(260px,30%,420px)] items-center gap-8 lg:gap-12">
-            {/* Number column — single giant number, 3 stacked cross-fading */}
-            <div
-              className="relative leading-[0.9] tracking-tight"
-              aria-hidden
-            >
-              {/* Invisible reserver keeps the grid cell sized correctly */}
-              <span
-                className="block text-[clamp(7rem,14vw,14rem)] font-light opacity-0 select-none"
+          {/* ── Desktop: centered stage ───────────────────────────────────────── */}
+          <div className="hidden min-h-0 flex-1 items-center md:flex">
+            <div className="grid w-full grid-cols-[auto_minmax(0,1fr)_clamp(260px,30%,420px)] items-center gap-8 lg:gap-12">
+              {/* Number column — single giant number, 3 stacked cross-fading */}
+              <div
+                className="relative leading-[0.9] tracking-tight"
                 aria-hidden
               >
-                01
-              </span>
-              {(["01", "02", "03"] as const).map((n, i) => (
+                {/* Invisible reserver keeps the grid cell sized correctly */}
                 <span
-                  key={n}
-                  ref={(el) => {
-                    numRefs.current[i] = el;
-                  }}
-                  className="absolute inset-0 text-[clamp(7rem,14vw,14rem)] font-light text-cream-50"
+                  className="block text-[clamp(7rem,14vw,14rem)] font-light opacity-0 select-none"
+                  aria-hidden
                 >
-                  {n}
+                  01
                 </span>
+                {(["01", "02", "03"] as const).map((n, i) => (
+                  <span
+                    key={n}
+                    ref={(el) => {
+                      numRefs.current[i] = el;
+                    }}
+                    className="absolute inset-0 text-[clamp(7rem,14vw,14rem)] font-light text-cream-50"
+                  >
+                    {n}
+                  </span>
+                ))}
+              </div>
+
+              {/* Content column — all 3 stacked in the same cell */}
+              <div className="relative min-h-[clamp(180px,30vh,280px)]">
+                {CARD_KEYS.map((key: CardKey, i) => (
+                  <div
+                    key={key}
+                    ref={(el) => {
+                      contentRefs.current[i] = el;
+                    }}
+                    className={
+                      i === 0
+                        ? "space-y-3 lg:space-y-4"
+                        : "absolute inset-0 space-y-3 lg:space-y-4"
+                    }
+                  >
+                    <h3 className="text-[clamp(1.375rem,2.4vw,2rem)] font-light leading-tight">
+                      {t(`${key}.title`)}
+                    </h3>
+
+                    <p className="max-w-[54ch] text-[clamp(0.875rem,1vw,1rem)] font-light leading-relaxed text-cream-50/80">
+                      {t(`${key}.body`)}
+                    </p>
+
+                    <ul className="space-y-1 pt-1">
+                      {BULLETS.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-2 text-[clamp(0.8125rem,0.95vw,0.9375rem)] text-cream-50/80"
+                        >
+                          <span className="shrink-0 text-gold-500" aria-hidden>
+                            —
+                          </span>
+                          <span>{t(`${key}.${b}`)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              {/* Image column */}
+              <div className="relative">
+                {CARD_KEYS.map((key: CardKey, i) => (
+                  <div
+                    key={key}
+                    ref={(el) => {
+                      imageRefs.current[i] = el;
+                    }}
+                    className={
+                      i === 0
+                        ? "aspect-647/509 max-h-[48vh] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+                        : "absolute inset-0 aspect-647/509 max-h-[48vh] overflow-hidden border border-cream-50/10 bg-navy-800"
+                    }
+                    role="img"
+                    aria-label={t(`${key}.title`)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Stage progress indicator + CTA ──────────────────────────────── */}
+          <div className="hidden shrink-0 flex-col items-center gap-4 pt-3 md:flex lg:pt-4">
+            <div className="flex gap-3">
+              {CARD_KEYS.map((key, i) => (
+                <span
+                  key={key}
+                  className="h-px w-10 bg-cream-50/20"
+                  data-progress-dot={i}
+                  aria-hidden
+                />
               ))}
             </div>
+            <Link href="/services">
+              <Button size="md">{t("exploreCta")}</Button>
+            </Link>
+          </div>
 
-            {/* Content column — all 3 stacked in the same cell */}
-            <div className="relative min-h-[clamp(180px,30vh,280px)]">
-              {CARD_KEYS.map((key: CardKey, i) => (
-                <div
-                  key={key}
-                  ref={(el) => {
-                    contentRefs.current[i] = el;
-                  }}
-                  className={
-                    i === 0
-                      ? "space-y-3 lg:space-y-4"
-                      : "absolute inset-0 space-y-3 lg:space-y-4"
-                  }
-                >
-                  <h3 className="text-[clamp(1.375rem,2.4vw,2rem)] font-light leading-tight">
+          {/* ── Mobile fallback: stacked cards (non-pinned) ───────────────────── */}
+          <div className="space-y-0 md:hidden">
+            {CARD_KEYS.map((key: CardKey, i) => (
+              <article
+                key={key}
+                className="border-t border-cream-50/10 py-12 first:border-t-0 first:pt-0"
+              >
+                <div className="grid gap-6">
+                  <span
+                    className="text-h1 font-light text-cream-50"
+                    aria-hidden
+                  >
+                    {(["01", "02", "03"] as const)[i]}
+                  </span>
+                  <h3 className="text-h2 font-light leading-tight">
                     {t(`${key}.title`)}
                   </h3>
-
-                  <p className="max-w-[54ch] text-[clamp(0.875rem,1vw,1rem)] font-light leading-relaxed text-cream-50/80">
+                  <p className="text-body font-light text-cream-50/80">
                     {t(`${key}.body`)}
                   </p>
-
-                  <ul className="space-y-1 pt-1">
+                  <ul className="space-y-2">
                     {BULLETS.map((b) => (
                       <li
                         key={b}
-                        className="flex items-start gap-2 text-[clamp(0.8125rem,0.95vw,0.9375rem)] text-cream-50/80"
+                        className="flex items-start gap-2 text-body text-cream-50/80"
                       >
                         <span className="shrink-0 text-gold-500" aria-hidden>
                           —
@@ -226,93 +304,22 @@ export function ThreeServices() {
                       </li>
                     ))}
                   </ul>
+                  <div
+                    className="aspect-647/509 w-full overflow-hidden border border-cream-50/10 bg-navy-800"
+                    role="img"
+                    aria-label={t(`${key}.title`)}
+                  />
                 </div>
-              ))}
-            </div>
-
-            {/* Image column */}
-            <div className="relative">
-              {CARD_KEYS.map((key: CardKey, i) => (
-                <div
-                  key={key}
-                  ref={(el) => {
-                    imageRefs.current[i] = el;
-                  }}
-                  className={
-                    i === 0
-                      ? "aspect-647/509 max-h-[48vh] w-full overflow-hidden border border-cream-50/10 bg-navy-800"
-                      : "absolute inset-0 aspect-647/509 max-h-[48vh] overflow-hidden border border-cream-50/10 bg-navy-800"
-                  }
-                  role="img"
-                  aria-label={t(`${key}.title`)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── Stage progress indicator + CTA ──────────────────────────────── */}
-        <div className="hidden shrink-0 flex-col items-center gap-4 pt-3 md:flex lg:pt-4">
-          <div className="flex gap-3">
-            {CARD_KEYS.map((key, i) => (
-              <span
-                key={key}
-                className="h-px w-10 bg-cream-50/20"
-                data-progress-dot={i}
-                aria-hidden
-              />
+              </article>
             ))}
+            <div className="flex justify-center pt-8">
+              <Link href="/services">
+                <Button size="lg">{t("exploreCta")}</Button>
+              </Link>
+            </div>
           </div>
-          <Link href="/services">
-            <Button size="md">{t("exploreCta")}</Button>
-          </Link>
-        </div>
-
-        {/* ── Mobile fallback: stacked cards (non-pinned) ───────────────────── */}
-        <div className="space-y-0 md:hidden">
-          {CARD_KEYS.map((key: CardKey, i) => (
-            <article
-              key={key}
-              className="border-t border-cream-50/10 py-12 first:border-t-0 first:pt-0"
-            >
-              <div className="grid gap-6">
-                <span className="text-h1 font-light text-cream-50" aria-hidden>
-                  {(["01", "02", "03"] as const)[i]}
-                </span>
-                <h3 className="text-h2 font-light leading-tight">
-                  {t(`${key}.title`)}
-                </h3>
-                <p className="text-body font-light text-cream-50/80">
-                  {t(`${key}.body`)}
-                </p>
-                <ul className="space-y-2">
-                  {BULLETS.map((b) => (
-                    <li
-                      key={b}
-                      className="flex items-start gap-2 text-body text-cream-50/80"
-                    >
-                      <span className="shrink-0 text-gold-500" aria-hidden>
-                        —
-                      </span>
-                      <span>{t(`${key}.${b}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div
-                  className="aspect-647/509 w-full overflow-hidden border border-cream-50/10 bg-navy-800"
-                  role="img"
-                  aria-label={t(`${key}.title`)}
-                />
-              </div>
-            </article>
-          ))}
-          <div className="flex justify-center pt-8">
-            <Link href="/services">
-              <Button size="lg">{t("exploreCta")}</Button>
-            </Link>
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </section>
   );
 }

@@ -4,11 +4,11 @@ import { ServicesInteractiveSection } from "@/components/sections/services/Servi
 import { CTABanner } from "@/components/sections/CTABanner";
 
 type ServicesPageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function ServicesPage({ params }: ServicesPageProps) {
-  const { locale } = params;
+export default async function ServicesPage({ params }: ServicesPageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

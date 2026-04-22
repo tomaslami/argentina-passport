@@ -1,6 +1,7 @@
 "use client";
 // Reason: motion/react animations on mount.
 
+import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 
@@ -11,16 +12,42 @@ import { duration, ease } from "@/lib/motion";
 export function ServicesHero() {
   const t = useTranslations("services.hero");
   const prefersReduced = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgWordRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = bgWordRef.current;
+    const container = sectionRef.current;
+    if (!el || !container) return;
+
+    const fit = () => {
+      el.style.fontSize = "200px";
+      el.style.fontSize = `${(container.clientWidth / el.offsetWidth) * 200}px`;
+    };
+
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <section className="relative flex min-h-[677px] items-end bg-navy-900 pb-24">
-      {/* Watermark — 408px Thin, cream-50, opacity 5% */}
-      <span
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[677px] items-end overflow-hidden bg-navy-900 pb-24"
+    >
+      {/* Watermark — scales to 100% section width */}
+      <div
+        className="pointer-events-none absolute top-[200px] w-full text-center"
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[200px] -translate-x-1/2 select-none whitespace-nowrap text-[25.5rem] font-extralight leading-none text-cream-50 opacity-5"
       >
-        {t("watermark")}
-      </span>
+        <span
+          ref={bgWordRef}
+          className="select-none whitespace-nowrap font-extralight leading-none text-cream-50 opacity-5"
+        >
+          {t("watermark")}
+        </span>
+      </div>
 
       <Container className="relative space-y-6">
         <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>

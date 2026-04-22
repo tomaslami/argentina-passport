@@ -6,11 +6,11 @@ import { InvestmentSupport } from "@/components/sections/investments/InvestmentS
 import { CTABanner } from "@/components/sections/CTABanner";
 
 type InvestmentsPageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function InvestmentsPage({ params }: InvestmentsPageProps) {
-  const { locale } = params;
+export default async function InvestmentsPage({ params }: InvestmentsPageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

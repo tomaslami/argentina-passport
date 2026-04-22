@@ -106,9 +106,9 @@ export function ExperiencesGrid() {
         whileInView="whileInView"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {cards.map((card) => (
+        {cards.map(({ key, ...card }) => (
           <motion.div
-            key={card.key}
+            key={key}
             variants={prefersReduced ? undefined : itemVariants}
           >
             <ExperienceCard {...card} />

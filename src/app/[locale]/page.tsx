@@ -8,11 +8,11 @@ import { ThreeServices } from "@/components/sections/home/Services";
 import { HowItWorks } from "@/components/sections/home/Process";
 
 type HomePageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default function HomePage({ params }: HomePageProps) {
-  const { locale } = params;
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (
