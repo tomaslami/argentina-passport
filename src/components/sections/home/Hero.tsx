@@ -42,12 +42,12 @@ export function HomeHero() {
       />
 
       <Container className="relative z-10 py-16 md:py-24">
-        <div className="max-w-[760px] space-y-8">
+        <div className="space-y-8">
           <motion.h1
             initial={initial}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.1 }}
-            className="text-display leading-none text-cream-50"
+            className="text-[clamp(2rem,6.5vw,6rem)] leading-[1.0] text-cream-50"
           >
             <span className="block font-extralight">{t("titleLine1")}</span>
             <span className="block font-medium">{t("titleLine2")}</span>
