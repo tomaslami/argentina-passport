@@ -12,8 +12,8 @@ import { duration, ease } from "@/lib/motion";
 type ServiceBlockProps = {
   /** "light" = cream bg (text navy), "dark" = navy bg (text cream) */
   variant: "light" | "dark";
-  /** "content-left" = icon+title+body LEFT, list RIGHT (blocks 1 & 3)
-   *  "content-right" = list LEFT, icon+title+body RIGHT (block 2)   */
+  /** "content-left" = icon+title+body LEFT, list RIGHT
+   *  "content-right" = list LEFT, icon+title+body RIGHT */
   layout: "content-left" | "content-right";
   icon: ReactNode;
   titleKey: string;
@@ -21,13 +21,6 @@ type ServiceBlockProps = {
   listTitleKey: string;
   itemKeys: readonly string[];
   namespace: string;
-  /**
-   * When true: section fills the full viewport height (h-screen) for the
-   * sticky scroll-reveal effect. Content is centered vertically.
-   * When false (default): normal py-24 md:py-32 padding.
-   */
-  fullScreen?: boolean;
-  className?: string;
 };
 
 export function ServiceBlock({
@@ -39,8 +32,6 @@ export function ServiceBlock({
   listTitleKey,
   itemKeys,
   namespace,
-  fullScreen = false,
-  className,
 }: ServiceBlockProps) {
   const t = useTranslations(namespace);
   const prefersReduced = useReducedMotion();
@@ -48,35 +39,48 @@ export function ServiceBlock({
   const isDark = variant === "dark";
   const isContentRight = layout === "content-right";
 
-  const textColor = isDark ? "text-cream-50" : "text-navy-900";
-  const bulletTextColor = isDark ? "text-cream-50" : "text-navy-900";
+  const titleColor = isDark ? "text-cream-50" : "text-navy-900";
+  const bodyColor = isDark ? "text-cream-50/65" : "text-text-muted";
+  const bulletTextColor = isDark ? "text-cream-50/80" : "text-navy-900/75";
 
   const contentCol = (
-    <div className="flex flex-col gap-8 lg:gap-10">
-      {icon}
-      <h2 className={cn("text-card-title font-normal leading-tight", textColor)}>
+    <motion.div
+      className="flex flex-col gap-7"
+      initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: duration.base, ease: ease.out }}
+    >
+      <div>{icon}</div>
+      <h2 className={cn("text-[2.5rem] font-light leading-tight", titleColor)}>
         {t(titleKey)}
       </h2>
-      <p className={cn("text-h4 font-normal", textColor)}>
+      <p className={cn("text-body font-light leading-[1.7]", bodyColor)}>
         {t(bodyKey)}
       </p>
-    </div>
+    </motion.div>
   );
 
   const listCol = (
-    <div className="flex flex-col gap-6 lg:gap-8">
-      <p className="text-[2rem] font-bold text-gold-500">
+    <div className="flex flex-col gap-5">
+      <motion.p
+        className="text-body-lg font-medium text-gold-500"
+        initial={prefersReduced ? {} : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: duration.base, ease: ease.out }}
+      >
         {t(listTitleKey)}
-      </p>
+      </motion.p>
       <motion.ul
-        className="flex flex-col gap-4 lg:gap-6"
+        className="flex flex-col gap-[0.65rem]"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         variants={{
           hidden: {},
           visible: {
-            transition: { staggerChildren: prefersReduced ? 0 : 0.07 },
+            transition: { staggerChildren: prefersReduced ? 0 : 0.06 },
           },
         }}
       >
@@ -84,17 +88,21 @@ export function ServiceBlock({
           <motion.li
             key={key}
             variants={{
-              hidden: { opacity: 0, y: prefersReduced ? 0 : 12 },
+              hidden: { opacity: 0, y: prefersReduced ? 0 : 10 },
               visible: {
                 opacity: 1,
                 y: 0,
                 transition: { duration: duration.base, ease: ease.out },
               },
             }}
-            className="flex items-baseline gap-3"
+            className="flex items-start gap-3"
           >
-            <span className="shrink-0 text-gold-500" aria-hidden>•</span>
-            <span className={cn("text-h4 font-normal", bulletTextColor)}>
+            {/* Small gold dot bullet */}
+            <span
+              className="mt-[0.45em] h-[5px] w-[5px] shrink-0 rounded-full bg-gold-500"
+              aria-hidden
+            />
+            <span className={cn("text-body font-light leading-snug", bulletTextColor)}>
               {t(key)}
             </span>
           </motion.li>
@@ -104,36 +112,21 @@ export function ServiceBlock({
   );
 
   return (
-    <section
-      className={cn(
-        isDark ? "bg-navy-900" : "bg-cream-50",
-        fullScreen
-          ? "flex h-screen items-center overflow-hidden"
-          : "py-24 md:py-32",
-        className,
-      )}
-    >
+    <section className={cn("py-20 md:py-28", isDark ? "bg-navy-900" : "bg-cream-50")}>
       <Container>
-        {/*
-          content-left → [55fr content | 45fr list]
-          content-right → [45fr list | 55fr content]
-          Mobile: content always first (order-1), list second (order-2).
-        */}
-        {isContentRight ? (
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[45fr_55fr] lg:gap-20">
-            {/* List — visual left on desktop, below on mobile */}
-            <div className="order-2 lg:order-1">{listCol}</div>
-            {/* Content — visual right on desktop, above on mobile */}
-            <div className="order-1 lg:order-2">{contentCol}</div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[55fr_45fr] lg:gap-20">
-            {/* Content — visual left on desktop, above on mobile */}
-            <div>{contentCol}</div>
-            {/* List — visual right on desktop, below on mobile */}
-            <div>{listCol}</div>
-          </div>
-        )}
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+          {isContentRight ? (
+            <>
+              <div className="order-2 lg:order-1">{listCol}</div>
+              <div className="order-1 lg:order-2">{contentCol}</div>
+            </>
+          ) : (
+            <>
+              <div>{contentCol}</div>
+              <div>{listCol}</div>
+            </>
+          )}
+        </div>
       </Container>
     </section>
   );

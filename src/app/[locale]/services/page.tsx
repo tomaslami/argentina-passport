@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 
+import { ServicesHero } from "@/components/sections/services/Hero";
 import { ServicesInteractiveSection } from "@/components/sections/services/ServicesInteractiveSection";
 import { CTABanner } from "@/components/sections/CTABanner";
 
@@ -13,6 +14,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
 
   return (
     <>
+      <ServicesHero />
       <ServicesInteractiveSection />
       <CTABanner
         eyebrowKey="ctaBanner.getStarted.eyebrow"

@@ -31,32 +31,30 @@ export function AboutStatement() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: duration.base, ease: ease.out }}
           >
-            <p className="text-h1 font-light leading-[1.1] text-navy-900 md:text-[2.75rem] lg:text-[3.5rem] xl:text-display xl:whitespace-nowrap">
+            <p className="text-h2 font-light leading-[1.15] text-navy-900">
               {t("line1")}
             </p>
-            <p className="text-h1 font-light leading-[1.1] text-navy-900 md:text-[2.75rem] lg:text-[3.5rem] xl:text-display xl:whitespace-nowrap">
+            <p className="text-h2 font-light leading-[1.15] text-navy-900">
               {t("line2")}
             </p>
           </motion.div>
         </div>
 
-        {/* Badge — centered */}
+        {/* Badge on line — horizontal rule passing through the button */}
         <motion.div
-          className="flex justify-center"
+          className="relative flex items-center justify-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: duration.base, ease: ease.out, delay: 0.15 }}
         >
-          <div className="bg-navy-900 px-6 py-3">
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-navy-900" />
+          <div className="relative bg-navy-900 px-6 py-3">
             <span className="whitespace-nowrap text-small font-medium uppercase tracking-widest text-cream-50">
               {t("location")}
             </span>
           </div>
         </motion.div>
-
-        {/* Bottom divider */}
-        <div className="border-t border-navy-900/12" />
       </Container>
     </section>
   );

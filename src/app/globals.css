@@ -2,14 +2,14 @@
 
 @theme {
   /* Typography */
-  --font-sans: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, system-ui,
+  --font-sans: "Helvetica Neue", var(--font-helvetica-neue), Helvetica, system-ui,
     sans-serif;
 
   --text-display: 6rem;
   --text-display--line-height: 1.05;
   --text-h1: 3.5rem;
   --text-h1--line-height: 1.1;
-  --text-h2: 2.5rem;
+  --text-h2: 4rem;
   --text-h2--line-height: 1.15;
   --text-h3: 1.75rem;
   --text-h3--line-height: 1.2;
