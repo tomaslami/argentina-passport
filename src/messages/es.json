@@ -334,10 +334,60 @@
     }
   },
   "contact": {
-    "placeholder": {
-      "title": "La sección de contacto llegará con la spec 07.",
-      "body": "La server action y Resend se conectarán aquí pronto.",
-      "cta": "Volver al inicio"
+    "header": {
+      "backgroundWord": "CONTACTO",
+      "eyebrow": "Comuníquese con nosotros",
+      "titleLine1": "Inicie una conversación",
+      "titleLine2": "privada.",
+      "subtitle": "Consultas confidenciales disponibles en inglés, ruso, árabe y español. Todas las consultas se gestionan con absoluta discreción."
+    },
+    "form": {
+      "eyebrow": "AGENDAR CONSULTA",
+      "title": "Solicite una consulta privada.",
+      "fields": {
+        "fullName": "Nombre completo",
+        "email": "Correo electrónico",
+        "phone": "Teléfono (opcional)",
+        "country": "País de residencia",
+        "language": "Idioma preferido",
+        "investmentRange": "Rango de inversión",
+        "message": "Mensaje (opcional)"
+      },
+      "languages": {
+        "english": "Inglés",
+        "russian": "Ruso",
+        "arabic": "Árabe",
+        "spanish": "Español"
+      },
+      "ranges": {
+        "tier1": "$500K - $1M",
+        "tier2": "$1M - $3M",
+        "tier3": "$3M - $5M",
+        "tier4": "$5M+"
+      },
+      "submit": "ENVIAR SOLICITUD",
+      "submitting": "ENVIANDO…",
+      "success": {
+        "title": "Gracias.",
+        "body": "Responderemos dentro de 24 horas desde una dirección de correo privada."
+      },
+      "errors": {
+        "generic": "No se pudo enviar su solicitud. Escríbanos directamente a info@argentinapassport.com.",
+        "rateLimit": "Demasiadas solicitudes. Por favor, inténtelo más tarde.",
+        "validation": "Por favor, revise los campos indicados e intente nuevamente."
+      }
+    },
+    "confidentiality": {
+      "eyebrow": "DISCRECIÓN GARANTIZADA",
+      "titleLine1": "Todas las consultas se gestionan con",
+      "titleHighlight": "absoluta confidencialidad.",
+      "body": "Cada consulta está protegida bajo el privilegio abogado-cliente. Su información nunca se comparte con terceros. Sin recolección de datos más allá de lo necesario para la prestación del servicio. Discreción absoluta desde el primer contacto hasta el resultado final.",
+      "stat1Value": "24HS",
+      "stat1Label": "Tiempo de respuesta",
+      "stat2Value": "4",
+      "stat2Label": "Idiomas disponibles",
+      "stat3Value": "100%",
+      "stat3Label": "Confidencial"
     }
   },
   "notFound": {

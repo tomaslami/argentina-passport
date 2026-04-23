@@ -1,6 +1,8 @@
-﻿import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
-import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
+import { ContactHero } from "@/components/sections/contact/ContactHero";
+import { ContactForm } from "@/components/sections/contact/ContactForm";
+import { ConfidentialityBlock } from "@/components/sections/contact/ConfidentialityBlock";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -11,11 +13,10 @@ export default async function ContactPage({ params }: PageProps) {
   setRequestLocale(locale);
 
   return (
-    <PagePlaceholder
-      titleKey="contact.placeholder.title"
-      bodyKey="contact.placeholder.body"
-      ctaKey="contact.placeholder.cta"
-      ctaHref="/"
-    />
+    <>
+      <ContactHero />
+      <ContactForm />
+      <ConfidentialityBlock />
+    </>
   );
 }

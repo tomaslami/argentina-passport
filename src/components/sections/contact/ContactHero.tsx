@@ -1,5 +1,5 @@
 "use client";
-// Reason: ResizeObserver to scale the background watermark word to 100% section width.
+// Reason: ResizeObserver to scale the background watermark to 100% section width.
 
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
@@ -9,8 +9,8 @@ import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { duration, ease } from "@/lib/motion";
 
-export function VipsHero() {
-  const t = useTranslations("vips.header");
+export function ContactHero() {
+  const t = useTranslations("contact.header");
   const prefersReduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const bgWordRef = useRef<HTMLSpanElement>(null);
@@ -36,7 +36,7 @@ export function VipsHero() {
       ref={sectionRef}
       className="relative flex min-h-screen items-end overflow-hidden bg-navy-900 pb-16 md:pb-20"
     >
-      {/* Watermark — scales to 100% section width, centered vertically */}
+      {/* Watermark */}
       <div
         className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center"
         aria-hidden

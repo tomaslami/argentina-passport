@@ -334,10 +334,60 @@
     }
   },
   "contact": {
-    "placeholder": {
-      "title": "Contact interface ships with spec 07.",
-      "body": "Server action, validation and Resend messaging will connect here soon.",
-      "cta": "Back to home"
+    "header": {
+      "backgroundWord": "CONTACT",
+      "eyebrow": "Get in touch",
+      "titleLine1": "Begin a private",
+      "titleLine2": "conversation.",
+      "subtitle": "Confidential consultations available in English, Russian, Arabic and Spanish. All inquiries handled with complete discretion."
+    },
+    "form": {
+      "eyebrow": "SCHEDULE CONSULTATION",
+      "title": "Request a private consultation.",
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email address",
+        "phone": "Phone number (optional)",
+        "country": "Country of residence",
+        "language": "Preferred language",
+        "investmentRange": "Investment range",
+        "message": "Message (optional)"
+      },
+      "languages": {
+        "english": "English",
+        "russian": "Russian",
+        "arabic": "Arabic",
+        "spanish": "Spanish"
+      },
+      "ranges": {
+        "tier1": "$500K - $1M",
+        "tier2": "$1M - $3M",
+        "tier3": "$3M - $5M",
+        "tier4": "$5M+"
+      },
+      "submit": "SUBMIT REQUEST",
+      "submitting": "SENDING…",
+      "success": {
+        "title": "Thank you.",
+        "body": "We'll respond within 24 hours from a private email address."
+      },
+      "errors": {
+        "generic": "Could not send your request. Please email us directly at info@argentinapassport.com.",
+        "rateLimit": "Too many requests. Please try again later.",
+        "validation": "Please check the highlighted fields and try again."
+      }
+    },
+    "confidentiality": {
+      "eyebrow": "DISCRETION GUARANTEED",
+      "titleLine1": "All inquiries handled with",
+      "titleHighlight": "complete confidentiality.",
+      "body": "Every consultation is protected under attorney-client privilege. Your information is never shared with third parties. No data collection beyond what is necessary for service delivery. Absolute discretion from first contact to final outcome.",
+      "stat1Value": "24HS",
+      "stat1Label": "Response time",
+      "stat2Value": "4",
+      "stat2Label": "Languages available",
+      "stat3Value": "100%",
+      "stat3Label": "Confidential"
     }
   },
   "notFound": {
