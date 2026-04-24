@@ -8,7 +8,7 @@ export function QuoteBlock() {
   return (
     <section className="bg-cream-50 py-16 md:py-24">
       <Container>
-        <div className="mx-auto max-w-[800px] border-t border-navy-900/12 pt-12 text-end">
+        <div className="mx-auto max-w-[800px] border-t border-navy-900/12 pt-12 text-start md:text-end">
           <p className="text-h3 font-light italic text-navy-900">
             &ldquo;{t("text")}&rdquo;
           </p>
