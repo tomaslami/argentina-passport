@@ -19,7 +19,7 @@ export default async function ProcessPage({ params }: ProcessPageProps) {
 
       <section className="bg-cream-50 py-16 md:py-24 lg:py-32">
         <Container>
-          <div className="flex flex-col gap-24 md:gap-32 lg:gap-40">
+          <div className="flex flex-col gap-16 md:gap-24 lg:gap-40">
             <ProcessStep
               number="01"
               reverse={false}
