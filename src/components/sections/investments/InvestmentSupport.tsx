@@ -53,7 +53,7 @@ export function InvestmentSupport() {
               <h3 className="text-stat font-light text-gold-500">
                 {t(`${key}.title`)}
               </h3>
-              <p className="max-w-[420px] text-h3 font-light text-cream-50/80">
+              <p className="text-h3 font-light text-cream-50/80 lg:max-w-[420px]">
                 {t(`${key}.body`)}
               </p>
             </motion.div>
