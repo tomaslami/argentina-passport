@@ -16,16 +16,16 @@ export function AboutStatement() {
       <Container className="flex flex-col gap-16 md:gap-20">
 
         {/* Top row: eyebrow + vertical line | quote right-aligned */}
-        <div className="grid grid-cols-[max-content_1fr] gap-12 lg:gap-20">
-          {/* Left: eyebrow + decorative vertical line */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[max-content_1fr] md:gap-12 lg:gap-20">
+          {/* Left: eyebrow + decorative vertical line (line hidden on mobile) */}
           <div className="flex flex-col gap-4">
             <SectionEyebrow>{t("eyebrow")}</SectionEyebrow>
-            <div className="h-[140px] w-px bg-navy-900/20" />
+            <div className="hidden h-[140px] w-px bg-navy-900/20 md:block" />
           </div>
 
-          {/* Right: large quote, self-end so it aligns to bottom of the left column */}
+          {/* Right: large quote — left-aligned on mobile, right-aligned on desktop */}
           <motion.div
-            className="self-end text-right"
+            className="text-start md:self-end md:text-right"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
