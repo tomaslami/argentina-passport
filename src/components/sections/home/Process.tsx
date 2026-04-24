@@ -21,7 +21,7 @@ export function HowItWorks() {
   const t = useTranslations("home.process");
 
   return (
-    <section className="bg-cream-50 py-24 text-navy-900 md:py-32">
+    <section className="bg-cream-50 py-16 text-navy-900 md:py-24 lg:py-32">
       <Container className="space-y-12">
         {/* Section header */}
         <div className="space-y-4">

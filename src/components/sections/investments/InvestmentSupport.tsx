@@ -15,7 +15,7 @@ export function InvestmentSupport() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="bg-navy-900 py-24 md:py-32">
+    <section className="bg-navy-900 py-16 md:py-24 lg:py-32">
       <Container className="space-y-16">
         {/* Header */}
         <div className="space-y-4">

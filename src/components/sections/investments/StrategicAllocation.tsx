@@ -61,7 +61,7 @@ export function StrategicAllocation() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="bg-cream-50 py-24 md:py-32">
+    <section className="bg-cream-50 py-16 md:py-24 lg:py-32">
       <Container>
         {/* Section title */}
         <h2 className="text-display font-light text-navy-900">

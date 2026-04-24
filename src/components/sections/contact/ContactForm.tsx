@@ -65,7 +65,7 @@ export function ContactForm() {
     state.status === "validation" ? state.errors[name] : undefined;
 
   return (
-    <section className="bg-cream-50 py-24 md:py-32">
+    <section className="bg-cream-50 py-16 md:py-24 lg:py-32">
       <Container>
         <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
 

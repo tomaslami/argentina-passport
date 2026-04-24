@@ -11,7 +11,7 @@ export function IntroStatement() {
   const t = useTranslations("home.intro");
 
   return (
-    <section className="bg-cream-50 py-24 text-navy-900 md:py-32">
+    <section className="bg-cream-50 py-16 text-navy-900 md:py-24 lg:py-32">
       <Container className="grid gap-10 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:gap-16">
         <motion.h2
           className="text-h2 font-light leading-[1.15]"

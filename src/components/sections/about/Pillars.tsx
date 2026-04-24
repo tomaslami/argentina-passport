@@ -13,7 +13,7 @@ export function AboutPillars() {
   const t = useTranslations("about.pillars");
 
   return (
-    <section className="bg-cream-50 py-24 md:py-32">
+    <section className="bg-cream-50 py-16 md:py-24 lg:py-32">
       <Container>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
 
