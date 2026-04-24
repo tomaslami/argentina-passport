@@ -6,7 +6,9 @@
     "process": "Process",
     "investments": "Investments",
     "vips": "VIPs",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "language": "Language"
   },
   "footer": {
     "tagline": "Fast citizenship by investment with Argentine precision.",

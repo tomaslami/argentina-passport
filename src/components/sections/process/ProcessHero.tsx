@@ -34,7 +34,7 @@ export function ProcessHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[380px] items-end overflow-hidden bg-navy-900 pb-14 sm:min-h-[500px] sm:pb-20 lg:min-h-[677px] lg:pb-24"
+      className="relative flex h-[100svh] items-end overflow-hidden bg-navy-900 pb-14 sm:pb-20 lg:pb-24"
     >
       {/* Watermark — scales to 100% section width */}
       <div

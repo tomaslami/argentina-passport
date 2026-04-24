@@ -17,7 +17,7 @@ export function HomeHero() {
 
   return (
     <section
-      className="relative isolate flex h-[85vh] items-end bg-navy-900 text-cream-50 md:h-[90vh] lg:h-screen"
+      className="relative isolate flex h-[100svh] items-end bg-navy-900 text-cream-50"
       aria-label="Hero"
     >
       <video

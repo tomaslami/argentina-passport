@@ -34,7 +34,7 @@ export function VipsHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen items-end overflow-hidden bg-navy-900 pb-16 md:pb-20"
+      className="relative flex h-[100svh] items-end overflow-hidden bg-navy-900 pb-16 md:pb-20"
     >
       {/* Watermark — scales to 100% section width, centered vertically */}
       <div

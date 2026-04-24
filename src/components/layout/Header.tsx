@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { Logo } from "@/components/layout/Logo";
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -69,10 +70,7 @@ export function Header() {
         >
           <Logo
             theme={scrolled || isOpen ? "positive" : "negative"}
-            className={cn(
-              "h-9 w-auto md:h-10",
-              isOpen && "opacity-0 pointer-events-none",
-            )}
+            className="h-9 w-auto md:h-10"
           />
         </Link>
 
@@ -116,7 +114,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile toggle — two lines (20px + 12px, 5px gap) that morph into X */}
+        {/* Mobile toggle — two lines (20px + 12px) that morph into X */}
         <button
           type="button"
           className="relative z-[60] inline-flex h-11 w-11 cursor-pointer items-center justify-center lg:hidden"
@@ -128,7 +126,7 @@ export function Header() {
             className={cn(
               "absolute block h-px transition-all duration-300 ease-out",
               isOpen
-                ? "w-6 rotate-45 bg-cream-50"
+                ? "w-6 rotate-45 bg-navy-900"
                 : scrolled
                   ? "w-5 -translate-y-[3px] bg-navy-900"
                   : "w-5 -translate-y-[3px] bg-cream-50",
@@ -138,7 +136,7 @@ export function Header() {
             className={cn(
               "absolute block h-px transition-all duration-300 ease-out",
               isOpen
-                ? "w-6 -rotate-45 bg-cream-50"
+                ? "w-6 -rotate-45 bg-navy-900"
                 : scrolled
                   ? "w-3 translate-y-[3px] bg-navy-900"
                   : "w-3 translate-y-[3px] bg-cream-50",
@@ -147,43 +145,81 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile fullscreen overlay (navy) */}
+      {/* Mobile fullscreen overlay — cream bg, navy foreground */}
       <div
         className={cn(
-          "fixed inset-0 z-40 flex h-[100dvh] flex-col bg-navy-900 px-6 pt-24 pb-10 transition-opacity duration-300 ease-out lg:hidden",
+          "fixed inset-0 z-40 flex h-[100dvh] flex-col overflow-y-auto bg-cream-50 pt-[72px] transition-opacity duration-300 ease-out lg:hidden",
           isOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0",
         )}
         aria-hidden={!isOpen}
       >
-        <nav className="flex flex-1 flex-col items-center justify-center gap-0 text-center">
-          {links.map((link) => (
-            <Link
-              key={link.key}
-              href={link.href}
-              onClick={closeMenu}
-              className={cn(
-                "block py-6 text-[32px] font-light leading-none text-cream-50 transition-opacity duration-300 hover:opacity-60",
-                pathname === link.href && "text-gold-500",
-              )}
-            >
-              {t(link.key)}
-            </Link>
-          ))}
+        <div className="flex flex-1 flex-col px-6 pt-8 pb-8">
+          {/* Section label */}
+          <SectionEyebrow className="mb-6 text-gold-500">
+            {t("menu")}
+          </SectionEyebrow>
 
-          <Link href="/contact" onClick={closeMenu} className="mt-10 block">
-            <Button variant="primary" size="lg" className="px-10">
+          {/* Nav links — navy, large, left-aligned with gold rule between */}
+          <nav className="flex flex-col divide-y divide-navy-900/10 border-y border-navy-900/10">
+            {links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.key}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={cn(
+                    "group flex items-center justify-between py-5 transition-opacity duration-200 hover:opacity-70",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "text-[28px] font-light leading-none tracking-tight text-navy-900 transition-colors",
+                      isActive && "text-gold-500",
+                    )}
+                  >
+                    {t(link.key)}
+                  </span>
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "text-body font-light transition-colors",
+                      isActive ? "text-gold-500" : "text-navy-900/30",
+                    )}
+                  >
+                    →
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Primary CTA */}
+          <Link
+            href="/contact"
+            onClick={closeMenu}
+            className="mt-8 inline-flex"
+          >
+            <Button variant="primary" size="md" className="w-full">
               {t("contact")}
             </Button>
           </Link>
-        </nav>
 
-        <div className="flex items-center justify-between border-t border-cream-50/10 pt-6">
-          <LocaleSwitcher variant="header" />
-          <span className="text-eyebrow tracking-label uppercase text-cream-50/55">
-            {locale.toUpperCase()}
-          </span>
+          {/* Languages row */}
+          <div className="mt-10 flex items-center justify-between border-t border-navy-900/10 pt-6">
+            <span className="text-eyebrow uppercase tracking-[0.2em] text-navy-900/55">
+              {t("language")}
+            </span>
+            <LocaleSwitcher variant="header" theme="dark" />
+          </div>
+
+          {/* Footer line */}
+          <div className="mt-auto flex items-center justify-between pt-10 text-eyebrow uppercase tracking-[0.2em] text-navy-900/45">
+            <span>Buenos Aires</span>
+            <span>{locale.toUpperCase()}</span>
+          </div>
         </div>
       </div>
     </header>

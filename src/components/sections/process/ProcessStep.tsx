@@ -75,16 +75,16 @@ export function ProcessStep({
       transition={{ duration: duration.base, ease: ease.out }}
     >
       {/*
-        Per designer spec: on mobile, text (content) ALWAYS comes first and
-        the image (complementary visual) ALWAYS comes below.
+        Mobile: text ALWAYS first, image ALWAYS below — one image per step,
+        consistent across all four steps.
         Desktop (reverse=false): text LEFT, image RIGHT.
         Desktop (reverse=true):  image LEFT, text RIGHT.
       */}
       <div
         className={
           reverse
-            ? "order-1 lg:order-1" // image: below text on mobile, left on desktop
-            : "order-2 lg:order-2" // image: below text on mobile, right on desktop
+            ? "order-2 lg:order-1" // image: below text on mobile, LEFT on desktop
+            : "order-2 lg:order-2" // image: below text on mobile, RIGHT on desktop
         }
       >
         {imageCol}
@@ -93,8 +93,8 @@ export function ProcessStep({
       <div
         className={
           reverse
-            ? "order-2 lg:order-2" // text: first on mobile, right on desktop
-            : "order-1 lg:order-1" // text: first on mobile, left on desktop
+            ? "order-1 lg:order-2" // text: first on mobile, RIGHT on desktop
+            : "order-1 lg:order-1" // text: first on mobile, LEFT on desktop
         }
       >
         {textCol}
