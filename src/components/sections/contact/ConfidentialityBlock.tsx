@@ -62,7 +62,7 @@ export function ConfidentialityBlock() {
 
           {/* Stats */}
           <motion.div
-            className="mt-4 grid w-full grid-cols-3 gap-px border-t border-cream-50/10 pt-10"
+            className="mt-4 grid w-full grid-cols-1 gap-8 border-t border-cream-50/10 pt-10 sm:grid-cols-3 sm:gap-px"
             initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
