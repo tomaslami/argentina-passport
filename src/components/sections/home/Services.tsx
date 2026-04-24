@@ -2,6 +2,7 @@
 // Reason: GSAP ScrollTrigger requires browser APIs + motion/react hooks.
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "motion/react";
 import { gsap } from "gsap";
@@ -19,12 +20,12 @@ const BULLETS = ["bullet1", "bullet2", "bullet3", "bullet4"] as const;
 const NUMBERS = ["01", "02", "03"] as const;
 const TOTAL_LABEL = `0${CARD_KEYS.length}`;
 
-// Position for each stacked number in the left column.
-const NUM_POSITION = [
-  "top-0",
-  "top-1/2 -translate-y-1/2",
-  "bottom-[6%]",
-] as const;
+const SERVICE_IMAGES: { src: string; alt: string }[] = [
+  { src: "/services/service-01.png", alt: "Legal documents with official Argentine seal on a wooden desk" },
+  { src: "/services/service-02.png", alt: "Urban skyline at night reflecting on water" },
+  { src: "/services/service-03.png", alt: "Elegant outdoor table setting at sunset in Buenos Aires" },
+];
+
 
 export function ThreeServices() {
   const t = useTranslations("home.services");
@@ -35,6 +36,7 @@ export function ThreeServices() {
   const numRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const progressRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -58,7 +60,12 @@ export function ThreeServices() {
         autoAlpha: 0,
         y: 20,
       });
-      gsap.set([numRefs.current[1], numRefs.current[2]], { opacity: 0.2 });
+      // Numbers: active=gold, inactive=dimmed cream
+      gsap.set(numRefs.current[0], { color: "#C9A84C" });
+      gsap.set([numRefs.current[1], numRefs.current[2]], { color: "rgba(247,244,239,0.3)" });
+      // Progress segments: first filled (gold), others empty
+      gsap.set(progressRefs.current[0], { backgroundColor: "#C9A84C", scaleY: 1, transformOrigin: "top center" });
+      gsap.set([progressRefs.current[1], progressRefs.current[2]], { backgroundColor: "#C9A84C", scaleY: 0, transformOrigin: "top center" });
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.inOut" },
@@ -105,13 +112,16 @@ export function ThreeServices() {
         { autoAlpha: 0, y: -16, duration: FADE_OUT },
         0.3,
       );
-      tl.to(numRefs.current[0], { opacity: 0.2, duration: NUM_DIM }, 0.3);
+      // 01 "marked as read" → full cream; 02 activates → gold
+      tl.to(numRefs.current[0], { color: "#F7F4EF", duration: NUM_DIM }, 0.3);
+      tl.to(progressRefs.current[0], { backgroundColor: "#F7F4EF", duration: NUM_DIM }, 0.3);
+      tl.to(numRefs.current[1], { color: "#C9A84C", duration: NUM_DIM }, 0.3);
+      tl.to(progressRefs.current[1], { scaleY: 1, duration: FADE_IN }, 0.33);
       tl.to(
         [contentRefs.current[1], imageRefs.current[1]],
         { autoAlpha: 1, y: 0, duration: FADE_IN },
         0.33,
       );
-      tl.to(numRefs.current[1], { opacity: 1, duration: NUM_DIM }, 0.3);
 
       // Cross-fade 1 → 2
       tl.to(
@@ -119,13 +129,16 @@ export function ThreeServices() {
         { autoAlpha: 0, y: -16, duration: FADE_OUT },
         0.7,
       );
-      tl.to(numRefs.current[1], { opacity: 0.2, duration: NUM_DIM }, 0.7);
+      // 02 "marked as read" → full cream; 03 activates → gold
+      tl.to(numRefs.current[1], { color: "#F7F4EF", duration: NUM_DIM }, 0.7);
+      tl.to(progressRefs.current[1], { backgroundColor: "#F7F4EF", duration: NUM_DIM }, 0.7);
+      tl.to(numRefs.current[2], { color: "#C9A84C", duration: NUM_DIM }, 0.7);
+      tl.to(progressRefs.current[2], { scaleY: 1, duration: FADE_IN }, 0.73);
       tl.to(
         [contentRefs.current[2], imageRefs.current[2]],
         { autoAlpha: 1, y: 0, duration: FADE_IN },
         0.73,
       );
-      tl.to(numRefs.current[2], { opacity: 1, duration: NUM_DIM }, 0.7);
 
       // Pad timeline to exactly 1.0 so snap maps cleanly to [0, 0.5, 1].
       tl.to({}, { duration: 0.1 }, 0.9);
@@ -147,20 +160,37 @@ export function ThreeServices() {
           <Container className="flex h-full flex-col pt-20 pb-4 lg:pt-24 lg:pb-6">
             {/* Main 3-column grid */}
             <div className="grid min-h-0 flex-1 grid-cols-[10%_minmax(0,1fr)_36%] gap-6 lg:gap-10">
-              {/* ── Left: stacked numbers, static position, opacity toggles ── */}
-              <div className="relative h-full">
-                {NUMBERS.map((n, i) => (
-                  <span
-                    key={n}
-                    ref={(el) => {
-                      numRefs.current[i] = el;
-                    }}
-                    aria-hidden
-                    className={`absolute left-0 block select-none text-[clamp(3.5rem,6.5vw,5.5rem)] font-light leading-[0.85] text-cream-50 ${NUM_POSITION[i]}`}
-                  >
-                    {n}
-                  </span>
-                ))}
+              {/* ── Left: progress bar + stacked numbers ── */}
+              <div className="flex h-full items-stretch gap-3">
+                {/* Progress track: 3 segments fill top→bottom as services advance */}
+                <div className="flex h-full flex-col gap-2">
+                  {NUMBERS.map((_, i) => (
+                    <div
+                      key={i}
+                      className="relative flex-1 w-[2px] overflow-hidden rounded-full bg-cream-50/15"
+                    >
+                      <div
+                        ref={(el) => { progressRefs.current[i] = el; }}
+                        className="absolute inset-x-0 top-0 h-full rounded-full bg-gold-500"
+                        style={{ transform: i === 0 ? "scaleY(1)" : "scaleY(0)", transformOrigin: "top center" }}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Numbers */}
+                <div className="flex h-full flex-col justify-between">
+                  {NUMBERS.map((n, i) => (
+                    <span
+                      key={n}
+                      ref={(el) => { numRefs.current[i] = el; }}
+                      aria-hidden
+                      className="block select-none text-[clamp(3.5rem,6.5vw,5.5rem)] font-light leading-[0.85] text-cream-50"
+                    >
+                      {n}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {/* ── Center: content panels, absolute-stacked, vertical cross-fade ── */}
@@ -199,7 +229,7 @@ export function ThreeServices() {
 
               {/* ── Right: image panels, absolute-stacked, vertical cross-fade ── */}
               <div className="relative flex h-full items-center justify-center">
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-4/3 w-full">
                   {CARD_KEYS.map((key, i) => (
                     <div
                       key={key}
@@ -207,9 +237,16 @@ export function ThreeServices() {
                         imageRefs.current[i] = el;
                       }}
                       className="absolute inset-0 overflow-hidden border border-cream-50/10 bg-navy-800"
-                      role="img"
-                      aria-label={t(`${key}.title`)}
-                    />
+                    >
+                      <Image
+                        src={SERVICE_IMAGES[i].src}
+                        alt={SERVICE_IMAGES[i].alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 0px, 36vw"
+                        priority={i === 0}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -246,7 +283,13 @@ export function ThreeServices() {
 
           <div className="flex flex-col divide-y divide-cream-50/10">
             {CARD_KEYS.map((key, i) => (
-              <StackedPanel key={key} cardKey={key} number={NUMBERS[i]} />
+              <StackedPanel
+                key={key}
+                cardKey={key}
+                number={NUMBERS[i]}
+                imageSrc={SERVICE_IMAGES[i].src}
+                imageAlt={SERVICE_IMAGES[i].alt}
+              />
             ))}
           </div>
 
@@ -261,9 +304,14 @@ export function ThreeServices() {
   );
 }
 
-type StackedPanelProps = { cardKey: CardKey; number: string };
+type StackedPanelProps = {
+  cardKey: CardKey;
+  number: string;
+  imageSrc: string;
+  imageAlt: string;
+};
 
-function StackedPanel({ cardKey, number }: StackedPanelProps) {
+function StackedPanel({ cardKey, number, imageSrc, imageAlt }: StackedPanelProps) {
   const t = useTranslations("home.services");
   const prefersReduced = useReducedMotion();
 
@@ -275,6 +323,16 @@ function StackedPanel({ cardKey, number }: StackedPanelProps) {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: duration.base, ease: ease.out }}
     >
+      {/* Image above text on mobile (per spec) */}
+      <div className="relative mb-6 aspect-4/3 w-full overflow-hidden bg-navy-800">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 0px"
+        />
+      </div>
       <span
         className="mb-4 block text-h2 font-light text-gold-500/85"
         aria-hidden
