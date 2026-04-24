@@ -5,11 +5,13 @@
   --font-sans: "Helvetica Neue", var(--font-helvetica-neue), Helvetica, system-ui,
     sans-serif;
 
-  --text-display: 6rem;
+  /* Fluid scale — clamp(mobile-min, vw-slope, desktop-max)        */
+  /* vw-slope is calibrated so the value hits the max at 1280px.   */
+  --text-display: clamp(3.5rem, 7.5vw, 6rem);
   --text-display--line-height: 1.05;
-  --text-h1: 3.5rem;
+  --text-h1: clamp(2.25rem, 4.375vw, 3.5rem);
   --text-h1--line-height: 1.1;
-  --text-h2: 4rem;
+  --text-h2: clamp(1.75rem, 5vw, 4rem);
   --text-h2--line-height: 1.15;
   --text-h3: 1.75rem;
   --text-h3--line-height: 1.2;
@@ -24,18 +26,18 @@
   --text-eyebrow: 0.75rem;
   --text-eyebrow--line-height: 1.4;
 
-  /* Figma-derived sizes (Home page) */
-  --text-service-number: 8rem;      /* 128px — números grandes de cards de servicio */
+  /* Figma-derived sizes — fluid */
+  --text-service-number: clamp(4.5rem, 10vw, 8rem);
   --text-service-number--line-height: 1;
-  --text-card-title: 4rem;          /* 64px — títulos de cards de servicio */
+  --text-card-title: clamp(2rem, 5vw, 4rem);
   --text-card-title--line-height: 1.1;
-  --text-stat: 3rem;                /* 48px — valores del StatsBar (mobile) */
+  --text-stat: clamp(1.75rem, 3.75vw, 3rem);
   --text-stat--line-height: 1;
-  --text-stat-lg: 4.5rem;           /* 72px — valores del StatsBar (desktop, design system) */
+  --text-stat-lg: clamp(2.25rem, 5.625vw, 4.5rem);
   --text-stat-lg--line-height: 1;
-  --text-step: 2.25rem;             /* 36px — números y títulos How it works */
+  --text-step: clamp(1.375rem, 2.8125vw, 2.25rem);
   --text-step--line-height: 1.2;
-  --text-step-body: 1.5rem;         /* 24px — cuerpo de pasos How it works */
+  --text-step-body: clamp(1.125rem, 1.875vw, 1.5rem);
   --text-step-body--line-height: 1.6;
 
   /* Color tokens (Figma-exact values) */
