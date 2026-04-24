@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { cn } from "@/lib/utils";
 import { ease, duration } from "@/lib/motion";
 
 const STEPS = [
@@ -42,7 +43,7 @@ export function HowItWorks() {
           }}
           className="divide-y divide-navy-900/15"
         >
-          {STEPS.map((step) => (
+          {STEPS.map((step, i) => (
             <motion.div
               key={step.key}
               variants={{
@@ -53,20 +54,26 @@ export function HowItWorks() {
                   transition: { duration: duration.base, ease: ease.out },
                 },
               }}
-              className="grid cursor-default items-center gap-6 rounded-none px-4 py-10 transition-colors duration-300 hover:bg-slate/10 md:-mx-4 md:grid-cols-[100px_1fr_1fr] md:gap-10 md:px-4"
+              className={cn(
+                "grid cursor-default items-start gap-3 rounded-none py-8 transition-colors duration-300 md:-mx-4 md:grid-cols-[100px_1fr_1fr] md:items-center md:gap-10 md:px-4 md:py-10 md:hover:bg-slate/10",
+                // Mobile: left gold border for the first (active) step
+                i === 0
+                  ? "border-l-2 border-gold-500 pl-4 md:border-l-0 md:pl-4"
+                  : "pl-0 md:pl-4",
+              )}
             >
-              {/* Number — gold, 64px */}
-              <span className="text-h1 font-normal leading-none text-gold-500">
+              {/* Number — gold */}
+              <span className="text-stat font-normal leading-none text-gold-500 md:text-h1">
                 {step.number}
               </span>
 
-              {/* Title — navy, medium */}
-              <h3 className="text-h3 font-normal text-navy-900">
+              {/* Title — navy */}
+              <h3 className="text-h4 font-normal text-navy-900 md:text-h3">
                 {t(`${step.key}.title`)}
               </h3>
 
               {/* Body — muted */}
-              <p className="text-body-lg font-light text-text-muted">
+              <p className="text-body font-light text-text-muted md:text-body-lg">
                 {t(`${step.key}.body`)}
               </p>
             </motion.div>

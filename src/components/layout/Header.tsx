@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { IconMenu2, IconX } from "@tabler/icons-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
@@ -40,6 +39,17 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll while overlay is open (mobile).
+  useEffect(() => {
+    if (isOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [isOpen]);
+
   const closeMenu = () => setIsOpen(false);
 
   return (
@@ -49,21 +59,24 @@ export function Header() {
         scrolled ? "bg-cream-50 shadow-sm" : "bg-transparent",
       )}
     >
-      <div className="relative flex h-16 items-center justify-between px-6 md:h-[80px] md:px-12 lg:px-20">
+      <div className="relative flex h-16 items-center justify-between px-6 md:h-[72px] md:px-8 lg:px-12 xl:px-16">
         {/* Logo */}
         <Link
           href="/"
           onClick={closeMenu}
           aria-label="Argentina Passport home"
-          className="relative z-10 transition-opacity duration-300 hover:opacity-70"
+          className="relative z-[60] transition-opacity duration-300 hover:opacity-70"
         >
           <Logo
-            theme={scrolled ? "positive" : "negative"}
-            className="h-9 w-auto md:h-12"
+            theme={scrolled || isOpen ? "positive" : "negative"}
+            className={cn(
+              "h-9 w-auto md:h-10",
+              isOpen && "opacity-0 pointer-events-none",
+            )}
           />
         </Link>
 
-        {/* Centered nav — full white by default, dims on hover */}
+        {/* Centered nav — desktop only (>= 1024px) */}
         <nav className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex">
           {links.map((link) => (
             <Link
@@ -89,7 +102,7 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right controls */}
+        {/* Right controls — desktop only */}
         <div className="hidden items-center gap-3 lg:flex">
           <LocaleSwitcher variant="dropdown" theme={scrolled ? "dark" : "light"} />
           <Link href="/contact">
@@ -103,61 +116,75 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle — two lines (20px + 12px, 5px gap) that morph into X */}
         <button
           type="button"
-          className={cn(
-            "inline-flex cursor-pointer items-center justify-center transition-opacity duration-300 hover:opacity-60 lg:hidden",
-            scrolled ? "text-navy-900" : "text-cream-50",
-          )}
-          onClick={() => setIsOpen(true)}
-          aria-label="Open navigation"
+          className="relative z-[60] inline-flex h-11 w-11 cursor-pointer items-center justify-center lg:hidden"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
         >
-          <IconMenu2 size={24} stroke={1.25} />
+          <span
+            className={cn(
+              "absolute block h-px transition-all duration-300 ease-out",
+              isOpen
+                ? "w-6 rotate-45 bg-cream-50"
+                : scrolled
+                  ? "w-5 -translate-y-[3px] bg-navy-900"
+                  : "w-5 -translate-y-[3px] bg-cream-50",
+            )}
+          />
+          <span
+            className={cn(
+              "absolute block h-px transition-all duration-300 ease-out",
+              isOpen
+                ? "w-6 -rotate-45 bg-cream-50"
+                : scrolled
+                  ? "w-3 translate-y-[3px] bg-navy-900"
+                  : "w-3 translate-y-[3px] bg-cream-50",
+            )}
+          />
         </button>
       </div>
 
-      {/* Mobile fullscreen overlay */}
+      {/* Mobile fullscreen overlay (navy) */}
       <div
         className={cn(
-          "fixed inset-0 flex h-full flex-col bg-navy-900/95 px-6 py-10 transition-opacity duration-300 ease-out lg:hidden",
-          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
+          "fixed inset-0 z-40 flex h-[100dvh] flex-col bg-navy-900 px-6 pt-24 pb-10 transition-opacity duration-300 ease-out lg:hidden",
+          isOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
         )}
+        aria-hidden={!isOpen}
       >
-        <div className="flex items-center justify-between">
-          <Link href="/" onClick={closeMenu} aria-label="Argentina Passport home">
-            <Logo theme="negative" className="h-9 w-auto" />
-          </Link>
-          <button
-            type="button"
-            onClick={closeMenu}
-            aria-label="Close navigation"
-            className="cursor-pointer text-cream-50 transition-opacity duration-300 hover:opacity-60"
-          >
-            <IconX size={24} stroke={1.25} />
-          </button>
-        </div>
-        <div className="mt-10 flex flex-col gap-6 text-h3 font-light">
+        <nav className="flex flex-1 flex-col items-center justify-center gap-0 text-center">
           {links.map((link) => (
             <Link
               key={link.key}
               href={link.href}
               onClick={closeMenu}
-              className="text-cream-50 transition-opacity duration-300 hover:opacity-60"
+              className={cn(
+                "block py-6 text-[32px] font-light leading-none text-cream-50 transition-opacity duration-300 hover:opacity-60",
+                pathname === link.href && "text-gold-500",
+              )}
             >
               {t(link.key)}
             </Link>
           ))}
-          <Link href="/contact" onClick={closeMenu}>
-            <Button className="w-full" size="md">
+
+          <Link href="/contact" onClick={closeMenu} className="mt-10 block">
+            <Button variant="primary" size="lg" className="px-10">
               {t("contact")}
             </Button>
           </Link>
+        </nav>
+
+        <div className="flex items-center justify-between border-t border-cream-50/10 pt-6">
+          <LocaleSwitcher variant="header" />
+          <span className="text-eyebrow tracking-label uppercase text-cream-50/55">
+            {locale.toUpperCase()}
+          </span>
         </div>
-        <LocaleSwitcher variant="header" className="mt-8" />
-        <p className="mt-auto text-small text-cream-50/60">
-          {locale.toUpperCase()} · Argentina Passport
-        </p>
       </div>
     </header>
   );

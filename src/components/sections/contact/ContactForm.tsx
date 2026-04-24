@@ -22,7 +22,7 @@ type FieldProps = {
 function Field({ label, error, children }: FieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="text-eyebrow font-normal tracking-widest uppercase text-navy-900/50">
+      <span className="text-eyebrow font-normal uppercase text-navy-900/50 tracking-[0.15em] md:tracking-[0.2em]">
         {label}
       </span>
       {children}
@@ -67,7 +67,7 @@ export function ContactForm() {
   return (
     <section className="bg-cream-50 py-16 md:py-24 lg:py-32">
       <Container>
-        <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid grid-cols-1 items-start gap-12 md:gap-16 lg:grid-cols-2 lg:gap-20">
 
           {/* ── Left: form ── */}
           <div className="flex flex-col gap-10">
@@ -84,7 +84,7 @@ export function ContactForm() {
             {state.status === "success" ? (
               <SuccessMessage t={t} />
             ) : (
-              <form action={formAction} className="flex flex-col gap-7" noValidate>
+              <form action={formAction} className="flex flex-col gap-6 md:gap-7" noValidate>
                 {/* Honeypot — invisible to humans, filled by bots */}
                 <input
                   name="website"
@@ -212,7 +212,13 @@ export function ContactForm() {
                 )}
 
                 <div>
-                  <Button variant="primary" size="md" type="submit" disabled={isPending}>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    type="submit"
+                    disabled={isPending}
+                    className="w-full md:w-auto"
+                  >
                     {isPending ? t("form.submitting") : t("form.submit")}
                   </Button>
                 </div>

@@ -102,14 +102,13 @@ export function StatsBar({ className }: StatsBarProps) {
   return (
     <section className={cn("bg-navy-800 py-6 md:py-8", className)}>
       <Container>
-        <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4 lg:gap-y-0">
+        <div className="grid grid-cols-2 gap-y-6 md:gap-y-8 lg:grid-cols-4 lg:gap-y-0">
           {STATS.map((stat, index) => {
             const label = t(stat.labelKey);
             const valueTemplate = t(stat.valueKey);
             const isLast = index === STATS.length - 1;
             const valueClass = cn(
-              "text-h2 font-normal leading-none",
-              "text-gold-500",
+              "text-stat font-normal leading-none text-gold-500",
             );
 
             return (
@@ -129,7 +128,7 @@ export function StatsBar({ className }: StatsBarProps) {
                 ) : (
                   <span className={valueClass}>{valueTemplate}</span>
                 )}
-                <span className="text-eyebrow uppercase tracking-[0.1em] text-cream-50/55">
+                <span className="text-eyebrow tracking-label uppercase text-cream-50/55">
                   {label}
                 </span>
               </div>

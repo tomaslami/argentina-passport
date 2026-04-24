@@ -14,11 +14,11 @@ export async function Footer() {
 
   return (
     <footer className="bg-navy-900 border-t border-gold-500">
-      <Container className="grid gap-12 py-16 text-start md:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid gap-10 py-12 text-start md:grid-cols-2 md:gap-12 md:py-16 lg:grid-cols-4">
         <div className="space-y-6">
           <Logo className="h-8 w-auto md:h-10" />
           <Link href="/contact" className="inline-flex">
-            <Button variant="secondary" size="md">
+            <Button variant="secondary" size="md" className="w-full sm:w-auto">
               {tFooter("cta")}
             </Button>
           </Link>
@@ -60,16 +60,21 @@ export async function Footer() {
         </div>
       </Container>
       <div className="border-t border-gold-500 bg-navy-deep">
-        <Container className="flex flex-col gap-4 py-6 text-small text-slate lg:flex-row lg:items-center lg:justify-between">
+        <Container className="flex flex-col gap-3 py-6 text-small text-slate md:flex-row md:items-center md:justify-between md:gap-4">
           <span>{tFooter("copyright")}</span>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>{tFooter("privacyPolicy")}</span>
-            <span>·</span>
+            <span aria-hidden>·</span>
             <span>{tFooter("terms")}</span>
-            <span>·</span>
+            <span aria-hidden>·</span>
             <span>{tFooter("cookies")}</span>
           </div>
-          <a href="https://synera.com.ar" target="_blank" rel="noreferrer" className="text-cream-50/70 transition-opacity duration-200 hover:opacity-90">
+          <a
+            href="https://synera.com.ar"
+            target="_blank"
+            rel="noreferrer"
+            className="text-cream-50/70 transition-opacity duration-200 hover:opacity-90"
+          >
             {tFooter("designedBy")}
           </a>
         </Container>

@@ -52,7 +52,7 @@ export function ServiceBlock({
       transition={{ duration: duration.base, ease: ease.out }}
     >
       <div>{icon}</div>
-      <h2 className={cn("text-[2.5rem] font-light leading-tight", titleColor)}>
+      <h2 className={cn("text-card-title font-light leading-tight", titleColor)}>
         {t(titleKey)}
       </h2>
       <p className={cn("text-body font-light leading-[1.7]", bodyColor)}>
@@ -112,18 +112,19 @@ export function ServiceBlock({
   );
 
   return (
-    <section className={cn("py-20 md:py-28", isDark ? "bg-navy-900" : "bg-cream-50")}>
+    <section className={cn("py-16 md:py-24 lg:py-28", isDark ? "bg-navy-900" : "bg-cream-50")}>
       <Container>
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+        <div className="grid grid-cols-1 items-start gap-12 md:items-center md:gap-16 lg:grid-cols-2 lg:gap-24">
+          {/* Mobile per spec: content (icon + title + body) first, list second — regardless of layout. */}
           {isContentRight ? (
             <>
-              <div className="order-2 lg:order-1">{listCol}</div>
               <div className="order-1 lg:order-2">{contentCol}</div>
+              <div className="order-2 lg:order-1">{listCol}</div>
             </>
           ) : (
             <>
-              <div>{contentCol}</div>
-              <div>{listCol}</div>
+              <div className="order-1">{contentCol}</div>
+              <div className="order-2">{listCol}</div>
             </>
           )}
         </div>

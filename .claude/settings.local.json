@@ -67,7 +67,9 @@
       "Bash(node -e \"const m = require\\('./messages/en.json'\\); console.log\\(JSON.stringify\\(m.services, null, 2\\)\\)\")",
       "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('services', {}\\), indent=2\\)\\)\")",
       "Skill(contact-form)",
-      "Skill(contact-form:*)"
+      "Skill(contact-form:*)",
+      "Bash(node -e \"const en = require\\('./messages/en.json'\\); console.log\\(JSON.stringify\\(en.vips ? 'vips key exists' : 'NO VIPS KEY', null, 2\\)\\)\")",
+      "Bash(node -e \"const en = require\\('./src/messages/en.json'\\); console.log\\('vips:', JSON.stringify\\(Object.keys\\(en.vips || {}\\)\\)\\)\")"
     ]
   }
 }

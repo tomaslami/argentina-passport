@@ -5,40 +5,81 @@
   --font-sans: "Helvetica Neue", var(--font-helvetica-neue), Helvetica, system-ui,
     sans-serif;
 
-  /* Fluid scale — clamp(mobile-min, vw-slope, desktop-max)        */
-  /* vw-slope is calibrated so the value hits the max at 1280px.   */
-  --text-display: clamp(3.5rem, 7.5vw, 6rem);
-  --text-display--line-height: 1.05;
-  --text-h1: clamp(2.25rem, 4.375vw, 3.5rem);
-  --text-h1--line-height: 1.1;
-  --text-h2: clamp(1.75rem, 5vw, 4rem);
+  /*
+   * Responsive typography per designer spec (responsive-design-guide).
+   * Breakpoints: 1440 / 1024 / 768 / 390 — we use clamp() to interpolate
+   * between the 390px floor and the 1440px ceiling. Tailwind breakpoints
+   * still drive layout changes, but typography is fluid so no size jumps.
+   *
+   * Minimums are never violated (no text smaller than 13px on mobile).
+   */
+
+  /* Display — section headlines: 34 / 44 / 52 / 64 */
+  --text-display: clamp(2.125rem, 1.069rem + 3.333vw, 4rem);
+  --text-display--line-height: 1.1;
+
+  /* Hero — home headline: 40 / 52 / 64 / 80 */
+  --text-h1: clamp(2.5rem, 1.389rem + 3.512vw, 5rem);
+  --text-h1--line-height: 1.05;
+
+  /* H2 — secondary display, uses display scale */
+  --text-h2: clamp(2.125rem, 1.069rem + 3.333vw, 4rem);
   --text-h2--line-height: 1.15;
-  --text-h3: 1.75rem;
+
+  /* H3 — sub-section titles: 22 → 28 */
+  --text-h3: clamp(1.375rem, 1.208rem + 0.536vw, 1.75rem);
   --text-h3--line-height: 1.2;
-  --text-h4: 1.25rem;
+
+  /* H4 — inline titles: 18 → 20 */
+  --text-h4: clamp(1.125rem, 1.083rem + 0.179vw, 1.25rem);
   --text-h4--line-height: 1.3;
-  --text-body-lg: 1.125rem;
+
+  /* Body-lg — 14 → 16 */
+  --text-body-lg: clamp(0.875rem, 0.819rem + 0.179vw, 1rem);
   --text-body-lg--line-height: 1.6;
-  --text-body: 1rem;
+
+  /* Body — 14 → 15 per designer spec (mobile 14, desktop 15) */
+  --text-body: clamp(0.875rem, 0.847rem + 0.089vw, 0.9375rem);
   --text-body--line-height: 1.6;
-  --text-small: 0.875rem;
+
+  /* Small — 13 → 14 (never below 13px on mobile) */
+  --text-small: clamp(0.8125rem, 0.792rem + 0.089vw, 0.875rem);
   --text-small--line-height: 1.5;
-  --text-eyebrow: 0.75rem;
+
+  /* Eyebrow / labels — fixed 9px per designer spec (letter-spacing reduces on mobile) */
+  --text-eyebrow: 0.5625rem;
   --text-eyebrow--line-height: 1.4;
 
-  /* Figma-derived sizes — fluid */
-  --text-service-number: clamp(4.5rem, 10vw, 8rem);
-  --text-service-number--line-height: 1;
-  --text-card-title: clamp(2rem, 5vw, 4rem);
-  --text-card-title--line-height: 1.1;
-  --text-stat: clamp(1.75rem, 3.75vw, 3rem);
+  /* Stats / metrics — 28 / 32 / 36 / 40 */
+  --text-stat: clamp(1.75rem, 1.417rem + 0.952vw, 2.5rem);
   --text-stat--line-height: 1;
-  --text-stat-lg: clamp(2.25rem, 5.625vw, 4.5rem);
+
+  /* Figma-derived larger numerals (hero stats) — 36 / 44 / 56 / 72 */
+  --text-stat-lg: clamp(2.25rem, 1.25rem + 3.214vw, 4.5rem);
   --text-stat-lg--line-height: 1;
-  --text-step: clamp(1.375rem, 2.8125vw, 2.25rem);
+
+  /* Service number (01/02/03 big) — 72 / 96 / 120 / 180 */
+  --text-service-number: clamp(4.5rem, 1.75rem + 8.571vw, 11.25rem);
+  --text-service-number--line-height: 1;
+
+  /* Card title — 40 / 48 / 56 / 64 */
+  --text-card-title: clamp(2.5rem, 2.083rem + 1.19vw, 4rem);
+  --text-card-title--line-height: 1.1;
+
+  /* Process step header — 22 / 26 / 30 / 36 */
+  --text-step: clamp(1.375rem, 1.069rem + 0.893vw, 2.25rem);
   --text-step--line-height: 1.2;
-  --text-step-body: clamp(1.125rem, 1.875vw, 1.5rem);
+
+  /* Process step body — 18 / 20 / 22 / 24 */
+  --text-step-body: clamp(1.125rem, 1rem + 0.357vw, 1.5rem);
   --text-step-body--line-height: 1.6;
+
+  /* Watermark — fluid vw; overflow must be hidden in parent */
+  --text-watermark: 22vw;
+  --text-watermark--line-height: 0.9;
+
+  /* Breakpoint-aware padding tokens (horizontal section padding) */
+  --space-gutter: 1.5rem;   /* 24px — mobile 390px */
 
   /* Color tokens (Figma-exact values) */
   --color-navy-900: #173557;
@@ -55,9 +96,38 @@
   --focus-shadow: 0 0 0 2px var(--color-gold-500);
 }
 
+/* Tailwind v4: align container gutters with designer spec
+ * 390px (mobile) → 24px  /  768px (tablet) → 32px
+ * 1024px (tablet-land) → 48px  /  1440px+ (desktop) → 64px
+ */
+@utility px-gutter {
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
+  @media (min-width: 1440px) {
+    padding-inline: 4rem;
+  }
+}
+
+@utility tracking-label {
+  letter-spacing: 0.2em;
+  @media (min-width: 1024px) {
+    letter-spacing: 0.35em;
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
   }
 
   body {
@@ -93,5 +163,17 @@
   :focus-visible {
     outline: 2px solid var(--color-gold-500);
     outline-offset: 4px;
+  }
+
+  /*
+   * Mobile animations: shorter duration for perceived agility.
+   * Respects prefers-reduced-motion (handled separately by motion/react).
+   */
+  @media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.4s;
+    }
   }
 }

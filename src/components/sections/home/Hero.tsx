@@ -17,11 +17,11 @@ export function HomeHero() {
 
   return (
     <section
-      className="relative isolate flex h-screen items-end bg-navy-900 text-cream-50"
+      className="relative isolate flex h-[85vh] items-end bg-navy-900 text-cream-50 md:h-[90vh] lg:h-screen"
       aria-label="Hero"
     >
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-center"
         autoPlay
         loop
         muted
@@ -41,24 +41,24 @@ export function HomeHero() {
         aria-hidden
       />
 
-      <Container className="relative z-10 py-16 md:py-24">
-        <div className="space-y-8">
+      <Container className="relative z-10 pb-12 pt-16 md:pb-20 md:pt-24 lg:pb-24">
+        <div className="space-y-6 md:space-y-8">
           <motion.h1
             initial={initial}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.1 }}
-            className="text-[clamp(2rem,6.5vw,6rem)] leading-[1.0] text-cream-50"
+            className="text-h1 leading-[1.05] text-cream-50"
           >
             <span className="block font-extralight">{t("titleLine1")}</span>
             <span className="block font-medium">{t("titleLine2")}</span>
           </motion.h1>
 
-          {/* Subtitle: 20px regular — Figma node 20-43 */}
+          {/* Subtitle: fluid 13→20 */}
           <motion.p
             initial={initialFade}
             animate={{ opacity: 1 }}
             transition={{ duration: duration.slow, ease: ease.out, delay: 0.3 }}
-            className="text-h4 max-w-[560px] font-normal text-cream-50"
+            className="max-w-[560px] text-body-lg font-normal text-cream-50 md:text-h4"
           >
             {t("subtitle")}
           </motion.p>
