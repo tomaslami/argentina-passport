@@ -34,11 +34,11 @@ export function AboutHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[677px] items-end overflow-hidden bg-navy-900 pb-24"
+      className="relative flex min-h-[380px] items-end overflow-hidden bg-navy-900 pb-14 sm:min-h-[500px] sm:pb-20 lg:min-h-[677px] lg:pb-24"
     >
       {/* Watermark — scales to 100% section width */}
       <div
-        className="pointer-events-none absolute top-[200px] w-full text-center"
+        className="pointer-events-none absolute top-[100px] w-full text-center sm:top-[140px] lg:top-[200px]"
         aria-hidden
       >
         <span

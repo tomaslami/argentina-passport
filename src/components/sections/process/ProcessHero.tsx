@@ -34,11 +34,11 @@ export function ProcessHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[677px] items-end overflow-hidden bg-navy-900 pb-24"
+      className="relative flex min-h-[380px] items-end overflow-hidden bg-navy-900 pb-14 sm:min-h-[500px] sm:pb-20 lg:min-h-[677px] lg:pb-24"
     >
       {/* Watermark — scales to 100% section width */}
       <div
-        className="pointer-events-none absolute top-[160px] w-full text-center"
+        className="pointer-events-none absolute top-[80px] w-full text-center sm:top-[120px] lg:top-[160px]"
         aria-hidden
       >
         <motion.span
