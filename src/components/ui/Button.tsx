@@ -8,16 +8,16 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold-500 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+    "bg-gold-500 text-navy-900 transition-colors duration-200 hover:bg-gold-400 active:bg-gold-400/90",
   secondary:
-    "border border-cream-50 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+    "border border-cream-50 text-cream-50 transition-all duration-200 hover:bg-cream-50/10 active:bg-cream-50/20",
   ghost:
-    "text-gold-500 transition-opacity duration-200 hover:opacity-80 active:opacity-70",
+    "text-gold-500 transition-colors duration-200 hover:text-gold-400 active:text-gold-400/80",
   inverse:
-    "bg-cream-50 text-navy-900 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+    "bg-cream-50 text-navy-900 transition-colors duration-200 hover:bg-cream-50/90 active:bg-cream-50/80",
   // Scrolled nav: navy bg + cream text (Figma node 20-78)
   navy:
-    "bg-navy-900 text-cream-50 transition-opacity duration-200 hover:opacity-90 active:opacity-80",
+    "bg-navy-900 text-cream-50 transition-colors duration-200 hover:bg-navy-800 active:bg-navy-800/90",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
