@@ -12,7 +12,8 @@ function resolveLocale(locale: string | undefined): AppLocale {
   return defaultLocale;
 }
 
-export default getRequestConfig(async ({ locale }) => {
+export default getRequestConfig(async ({ requestLocale }) => {
+  const locale = await requestLocale;
   const appLocale = resolveLocale(locale);
   const messages = (await import(`../messages/${appLocale}.json`)).default;
 
